@@ -585,17 +585,10 @@
       line-height: 1.5; color: var(--amber-deep);
       max-width: 640px; margin: 0 auto 36px;
     }
-    .closing-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 16px 38px;
-      background: var(--amber); color: #fff;
-      border-radius: 100px;
-      font-family: inherit; font-size: 16px; font-weight: 700;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
-    }
-    .closing-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); background: var(--amber-deep); border-bottom: none; }
-    .closing-cta::after { content: '←'; }
+
+
+    .logo-end { padding: 40px 0 10px; background: var(--bg-warm); }
+    .logo-end .atmo-figure--logo { margin: 0 auto; }
 
     /* ============ FOOTER ============ */
     footer { background: var(--bg-card); color: var(--ink-soft); padding: 56px 0 40px; text-align: center; border-top: 1px solid var(--line); }
@@ -756,7 +749,10 @@
     <div class="container">
       <div class="opening-lead reveal">
         <p>
-          הגוף שלנו מחזיק הרבה יותר ממה שאנחנו לפעמים מודעים אליו.
+          רוצים לשחרר סטרס, להוריד לחץ ולהרגיש רגועים יותר בגוף ובנפש?
+        </p>
+        <p>
+          הגוף שלנו מחזיק הרבה יותר ממה שאנחנו מודעים אליו.
         </p>
         <p>
           עומס, מתח, דריכות, תקופות אינטנסיביות, חוויות שלא הספקנו לעכל — כל אלה יכולים להישאר בגוף גם הרבה אחרי שהאירוע עצמו עבר.
@@ -775,7 +771,8 @@
       <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--mist">מה זה TRE</span></h2>
       <div class="opening-lead reveal">
         <p>
-          <strong>TRE – Tension &amp; Trauma Releasing Exercises</strong> היא שיטה גופנית המבוססת על סדרה פשוטה של תרגילים שמעוררים בגוף רעד נוירוגני טבעי.
+          <strong>TRE – Tension &amp; Trauma Releasing Exercises</strong><br>
+          שיטה גופנית המבוססת על סדרה פשוטה של תרגילים שמעוררים בגוף רעד נוירוגני טבעי.
         </p>
         <p>
           במקום לנסות להרפות בכוח, אנחנו לומדים ליצור את התנאים שבהם הגוף יכול להתחיל לעשות את זה בעצמו.
@@ -922,9 +919,6 @@
   <section class="instructor section-alt">
     <div class="container">
       <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--mist">קצת עליי</span></h2>
-      <figure class="atmo-figure atmo-figure--portrait reveal">
-        <img class="atmo-img" src="padit-action.jpg" alt="פדית ציבייר בסטודיו" loading="lazy" />
-      </figure>
       <div class="instructor-wrap reveal" style="margin-top: 8px;">
         <div class="instructor-avatar">
           <img src="pedit.jpg" alt="פדית ציבייר" />
@@ -959,17 +953,13 @@
     <div class="container reveal">
       <h2 class="section-title" style="text-align: center;">פשוט לרעוד</h2>
       <p class="closing-quote">
-        לפעמים אנחנו לא צריכים להבין עוד, לנתח עוד או להתאמץ כדי לשחרר.<br>
-        לפעמים אפשר פשוט לתת לגוף לעשות את מה שהוא יודע.
+        אנחנו לא צריכים להבין עוד, לנתח עוד או להתאמץ כדי לשחרר.<br>
+        אפשר פשוט לתת לגוף לעשות את מה שהוא יודע.
       </p>
       <span class="closing-mark"></span>
       <p class="closing-final">
         אני מזמינה אתכם לבוא ללמוד לרעוד.
       </p>
-      <a class="closing-cta" href="#form">אני רוצה להצטרף</a>
-      <figure class="atmo-figure atmo-figure--logo reveal" style="margin-top: 48px;">
-        <img src="studio-logo.png" alt="סטודיו לנשום" loading="lazy" />
-      </figure>
     </div>
   </section>
 
@@ -1012,6 +1002,13 @@
         <p class="form-note">ההודעה תיפתח בוואטסאפ עם פרטיכם/ן — תלחצו "שלח" כדי להשלים את ההרשמה.</p>
       </form>
     </div>
+  </section>
+
+  <!-- STUDIO LOGO -->
+  <section class="logo-end">
+    <figure class="atmo-figure atmo-figure--logo reveal">
+      <img src="studio-logo.png" alt="סטודיו לנשום" loading="lazy" />
+    </figure>
   </section>
 
   <!-- FOOTER -->
