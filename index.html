@@ -197,6 +197,20 @@
       line-height: 1.85;
       margin: 0 0 1em;
     }
+    .opening-lead p.opening-highlight {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-weight: 700;
+      font-size: clamp(24px, 3.4vw, 34px);
+      line-height: 1.6;
+      color: var(--ink);
+      margin: 0 0 1.2em;
+    }
+    .opening-highlight .hl {
+      background: linear-gradient(transparent 62%, var(--mist) 62%);
+      padding: 0 6px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
     .opening-quote {
       max-width: 620px;
       margin: 44px auto 0;
@@ -748,8 +762,8 @@
   <section class="opening">
     <div class="container">
       <div class="opening-lead reveal">
-        <p>
-          רוצים לשחרר הורמוני סטרס, להוריד לחץ ולהרגיש רגועים יותר בגוף ובנפש?
+        <p class="opening-highlight">
+          <span class="hl">רוצים לשחרר הורמוני סטרס, להוריד לחץ ולהרגיש רגועים יותר בגוף ובנפש?</span>
         </p>
         <p>
           הגוף שלנו מחזיק הרבה יותר ממה שאנחנו מודעים אליו.
