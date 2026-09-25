@@ -109,7 +109,10 @@
       opacity: 0.8;
     }
 
-    .hero-inner { position: relative; z-index: 1; text-align: center; max-width: 720px; margin-inline: auto; }
+    .hero-inner { position: relative; text-align: center; max-width: 720px; margin-inline: auto; }
+
+    .hero-logo { display: block; width: 150px; height: auto; margin: 0 auto 18px; mix-blend-mode: multiply; }
+    @media (max-width: 600px) { .hero-logo { width: 120px; margin-bottom: 14px; } }
 
     .emblem {
       width: 130px;
@@ -205,12 +208,6 @@
       color: var(--ink);
       margin: 0 0 1.2em;
     }
-    .opening-highlight .hl {
-      background: linear-gradient(transparent 62%, var(--mist) 62%);
-      padding: 0 6px;
-      -webkit-box-decoration-break: clone;
-      box-decoration-break: clone;
-    }
     .opening-quote {
       max-width: 620px;
       margin: 44px auto 0;
@@ -240,7 +237,7 @@
       max-width: 340px;
       margin: 8px auto 0;
     }
-    .atmo-figure--logo img { width: 100%; height: auto; display: block; }
+    .atmo-figure--logo img { width: 100%; height: auto; display: block; mix-blend-mode: multiply; }
     .atmo-figure--portrait {
       max-width: 340px;
       margin: 8px auto 40px;
@@ -741,6 +738,7 @@
     <div class="hero-blob-a" aria-hidden="true"></div>
     <div class="hero-blob-b" aria-hidden="true"></div>
     <div class="container hero-inner">
+      <img class="hero-logo" src="studio-logo.png" alt="סטודיו לנשום" />
       <svg class="emblem" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle class="ripple" cx="80" cy="80" r="70" fill="none" stroke="var(--mist)" stroke-width="2.5"/>
         <circle class="ripple" cx="80" cy="80" r="48" fill="none" stroke="var(--mist-deep)" stroke-width="2.5"/>
@@ -972,7 +970,7 @@
       </p>
       <span class="closing-mark"></span>
       <p class="closing-final">
-        אני מזמינה אתכם לבוא ללמוד לרעוד.
+        אני מזמינה אתכם לבוא ללמוד פשוט לרעוד.
       </p>
     </div>
   </section>
