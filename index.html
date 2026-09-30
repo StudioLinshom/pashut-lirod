@@ -115,29 +115,38 @@
 
     .hero-inner { position: relative; text-align: center; max-width: 720px; margin-inline: auto; }
 
-    .hero-logo { display: block; width: 240px; height: auto; margin: 0 auto 18px; mix-blend-mode: multiply; }
-    @media (max-width: 600px) { .hero-logo { width: 190px; margin-bottom: 14px; } }
+    .hero-logo { display: block; width: 210px; height: auto; margin: 0 auto; position: relative; }
+    @media (max-width: 600px) { .hero-logo { width: 170px; } }
 
-    .emblem {
-      width: 130px;
-      height: auto;
-      margin: 0 auto 26px;
+    .hero-emblem {
+      position: relative;
+      display: block;
+      width: fit-content;
+      margin: 0 auto 22px;
       animation: emblemPop 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: -34px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168, 196, 206, 0.5) 0%, rgba(217, 154, 91, 0.22) 52%, transparent 74%);
+      filter: blur(4px);
+      z-index: -1;
+      animation: haloPulse 3.4s ease-in-out infinite;
     }
     @keyframes emblemPop {
       0%   { opacity: 0; transform: translateY(8px) scale(0.85); }
       100% { opacity: 1; transform: translateY(0)   scale(1);    }
     }
-    @media (max-width: 600px) { .emblem { width: 104px; margin-bottom: 18px; } }
-    @media (prefers-reduced-motion: reduce) { .emblem { animation: none; } }
-    @keyframes rippleFade {
-      0%, 100% { opacity: 0.9; }
-      50% { opacity: 0.35; }
+    @keyframes haloPulse {
+      0%, 100% { opacity: 0.75; transform: scale(1); }
+      50%      { opacity: 1;    transform: scale(1.06); }
     }
-    .emblem .ripple { animation: rippleFade 2.8s ease-in-out infinite; transform-origin: 80px 80px; }
-    .emblem .ripple:nth-child(2) { animation-delay: 0.35s; }
-    .emblem .ripple:nth-child(3) { animation-delay: 0.7s; }
-    @media (prefers-reduced-motion: reduce) { .emblem .ripple { animation: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-emblem { animation: none; }
+      .hero-emblem::before { animation: none; }
+    }
 
     .eyebrow {
       display: inline-block;
@@ -241,7 +250,7 @@
       max-width: 340px;
       margin: 8px auto 0;
     }
-    .atmo-figure--logo img { width: 100%; height: auto; display: block; mix-blend-mode: multiply; }
+    .atmo-figure--logo img { width: 100%; height: auto; display: block; }
     .atmo-figure--portrait {
       max-width: 340px;
       margin: 8px auto 40px;
@@ -742,13 +751,9 @@
     <div class="hero-blob-a" aria-hidden="true"></div>
     <div class="hero-blob-b" aria-hidden="true"></div>
     <div class="container hero-inner">
-      <img class="hero-logo" src="studio-logo.png" alt="סטודיו לנשום" />
-      <svg class="emblem" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle class="ripple" cx="80" cy="80" r="70" fill="none" stroke="var(--mist)" stroke-width="2.5"/>
-        <circle class="ripple" cx="80" cy="80" r="48" fill="none" stroke="var(--mist-deep)" stroke-width="2.5"/>
-        <circle class="ripple" cx="80" cy="80" r="26" fill="none" stroke="var(--amber)" stroke-width="2.5"/>
-        <circle cx="80" cy="80" r="8" fill="var(--amber-deep)"/>
-      </svg>
+      <div class="hero-emblem">
+        <img class="hero-logo" src="studio-logo-clear.png" alt="סטודיו לנשום" />
+      </div>
       <span class="eyebrow">ארבעה מפגשים ללימוד ותרגול TRE</span>
       <h1>פשוט לרעוד</h1>
       <p class="hero-sub">דרך טבעית לשחרור מתח עמוק, ויסות מערכת העצבים והרפיה דרך הגוף.</p>
@@ -765,18 +770,18 @@
     <div class="container">
       <div class="opening-lead reveal">
         <p class="opening-highlight">
-          <span class="hl">רוצים לשחרר הורמוני סטרס, להוריד לחץ ולהרגיש רגועים יותר בגוף ובנפש?</span>
+          <span class="hl">רוצים לפרוק מתח שהצטבר בגוף, להפחית סטרס ולהרגיש רגועים יותר?</span>
         </p>
         <p>
-          הגוף שלנו מחזיק הרבה יותר ממה שאנחנו מודעים אליו.
+          גם כשהראש כבר מבין שהכול בסדר, הגוף עדיין מחזיק — מתח, עומס ודריכות שלא תמיד פשוט להרפות מהם.
         </p>
         <p>
-          עומס, מתח, דריכות, תקופות אינטנסיביות, חוויות שלא הספקנו לעכל — כל אלה יכולים להישאר בגוף גם הרבה אחרי שהאירוע עצמו עבר.
+          לגוף שלנו יש מנגנון טבעי שעוזר לו לפרוק את המתח הזה ולחזור בהדרגה לאיזון.
         </p>
       </div>
       <p class="opening-quote reveal">
-        לגוף יש מנגנונים טבעיים שעוזרים לו לפרוק מתח ולחזור לאיזון.<br>
-        <span class="mark">אחד מהם הוא רעד.</span>
+        אחד המנגנונים האלה הוא רעד.<br>
+        <span class="mark">וזה בדיוק מה שאנחנו לומדים לפגוש ב־TRE.</span>
       </p>
     </div>
   </section>
@@ -788,10 +793,16 @@
       <div class="opening-lead reveal">
         <p>
           <strong>TRE – Tension &amp; Trauma Releasing Exercises</strong><br>
-          שיטה גופנית המבוססת על סדרה פשוטה של תרגילים שמעוררים בגוף רעד נוירוגני טבעי.
+          שיטה פשוטה שמאפשרת לגוף להפעיל באופן טבעי רעד עדין ובלתי רצוני.
         </p>
         <p>
-          במקום לנסות להרפות בכוח, אנחנו לומדים ליצור את התנאים שבהם הגוף יכול להתחיל לעשות את זה בעצמו.
+          באמצעות סדרה של תרגילים פשוטים אנחנו מזמינים את הרעד להתעורר ונותנים לגוף לעשות את מה שהוא יודע לעשות באופן טבעי — לפרוק מתח, להרפות ולשחרר.
+        </p>
+        <p>
+          היופי ב־TRE הוא שלא צריך לדבר, לנתח או להבין מה בדיוק אנחנו מחזיקים בגוף.
+        </p>
+        <p>
+          אנחנו פשוט לומדים להקשיב לו, לאפשר לו לרעוד ולתת לו להוביל את התהליך.
         </p>
       </div>
 
@@ -814,36 +825,38 @@
   <!-- PROCESS -->
   <section class="process">
     <div class="container">
-      <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--amber">תהליך של ארבעה מפגשים</span></h2>
+      <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--amber">לומדים דרך הגוף</span></h2>
       <div class="process-lead reveal">
         <p>
-          עבודה עם TRE היא לא רק תרגול שעושים פעם אחת.
-          המטרה של הסדנה היא ללמוד את הכלי, להכיר בהדרגה את הדרך שבה הגוף האישי שלכם מגיב אליו, ובעיקר ללמוד איך לתרגל באופן עצמאי, בטוח וקשוב גם בבית.
+          את שיטת TRE לומדים דרך החוויה וההתנסות בגוף.
         </p>
         <p>
-          במהלך ארבעת השבועות נתרגל יחד, נעמיק בכל פעם עוד קצת ונלמד להכיר את הרעד ואת השפה של הגוף.
+          לאורך ארבעת המפגשים נתרגל יחד ונעמיק בהדרגה בהיכרות עם הרעד ועם הדרך הייחודית שבה הגוף של כל אחד ואחת מגיב אליו. נלמד להקשיב למה שקורה בגוף, לווסת את עוצמת התרגול ולזהות מתי נכון להמשיך, להאט או לעצור.
+        </p>
+        <p>
+          המטרה היא שתצאו מהסדנה עם כלי פשוט ונגיש שיכול לעזור לכם לפרוק מתח וסטרס, להרפות ולחזור שוב ושוב לתחושה של יותר שקט ואיזון — כלי שנשאר איתכם ותוכלו להשתמש בו גם בבית, מתי שתרצו.
         </p>
       </div>
       <div class="process-grid">
         <div class="process-card reveal" style="--rot: -1deg;">
           <div class="process-num">1</div>
-          <h3>מערכת העצבים והרעד</h3>
-          <p>נדבר על מערכת העצבים ועל המנגנון הטבעי של הרעד, ונכיר איך הוא עובד בגוף.</p>
+          <h3>להכיר את הרעד</h3>
+          <p>נחווה את הרעד הטבעי של הגוף ונכיר בהדרגה את הדרך שבה הוא מתעורר ונע בגוף.</p>
         </div>
         <div class="process-card reveal" style="--rot: 0.8deg;">
           <div class="process-num">2</div>
-          <h3>להזמין ולווסת</h3>
-          <p>נלמד איך להזמין את הרעד, ואיך לווסת את העוצמה שלו בהתאם למה שנכון לגוף שלנו.</p>
+          <h3>להקשיב לגוף</h3>
+          <p>נלמד לזהות את התחושות והתגובות שעולות בזמן התרגול ולתת לגוף להוביל בקצב שמתאים לו.</p>
         </div>
         <div class="process-card reveal" style="--rot: -0.6deg;">
           <div class="process-num">3</div>
-          <h3>מתי לעצור</h3>
-          <p>נזהה מתי נכון לעצור ואיך להתאים את התרגול למה שהגוף צריך באותו הרגע.</p>
+          <h3>לווסת ולבחור</h3>
+          <p>נלמד איך להשפיע על עוצמת הרעד, להעמיק כשמתאים, להאט או לעצור.</p>
         </div>
         <div class="process-card reveal" style="--rot: 1.1deg;">
           <div class="process-num">4</div>
-          <h3>שאלות ושיתוף</h3>
-          <p>יהיה גם מקום לשאלות, לשיתוף ולדברים שעולים בין מפגש למפגש.</p>
+          <h3>לקחת את זה לחיים</h3>
+          <p>נרכוש ביטחון בתרגול ונלמד איך להשתמש ב־TRE ככלי פשוט וזמין לפריקת מתח, הרפיה וחזרה לאיזון גם בבית.</p>
         </div>
       </div>
     </div>
@@ -1023,7 +1036,7 @@
   <!-- STUDIO LOGO -->
   <section class="logo-end">
     <figure class="atmo-figure atmo-figure--logo">
-      <img src="studio-logo.png" alt="סטודיו לנשום" loading="lazy" />
+      <img src="studio-logo-clear.png" alt="סטודיו לנשום" loading="lazy" />
     </figure>
   </section>
 
