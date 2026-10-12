@@ -306,10 +306,10 @@
     .video-lead strong { color: var(--ink); }
     .video-wrap {
       max-width: 680px; margin: 0 auto;
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--line);
-      border-bottom: none;
+      box-shadow: var(--shadow-lg);
       aspect-ratio: 16 / 9;
       position: relative;
       background: #fff;
@@ -334,19 +334,6 @@
     .video-facade:hover .video-play-btn { transform: translate(-50%, -50%) scale(1.06); }
     .video-play-btn svg { width: 28px; height: 28px; fill: #fff; margin-inline-start: 4px; }
     .video-facade.loading .video-play-btn { opacity: 0.6; }
-    .video-subs {
-      max-width: 680px; margin: 0 auto;
-      min-height: 64px;
-      padding: 14px 20px;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      background: var(--ink); color: #fff;
-      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-      font-size: 17px; font-weight: 500; line-height: 1.5;
-      box-shadow: var(--shadow-lg);
-    }
-    .video-subs.idle { color: rgba(255, 255, 255, 0.6); font-size: 14.5px; font-weight: 400; }
-    @media (max-width: 600px) { .video-subs { font-size: 15.5px; min-height: 72px; } }
     .video-disclaimer {
       max-width: 620px; margin: 14px auto 0; text-align: center;
       color: var(--ink-mute); font-size: 13.5px; line-height: 1.65;
@@ -941,21 +928,20 @@
 
       <p class="video-lead reveal">
         <strong>רוצים לראות איך זה נראה?</strong><br>
-        סרטון מצויר וקצר של ד״ר דיוויד ברסלי, מפתח השיטה, עם כתוביות בעברית.
+        סרטון מצויר של כחמש דקות שמציג את השיטה, עם תרגום אוטומטי לעברית של יוטיוב.
       </p>
       <div class="reveal">
         <div class="video-wrap" id="videoWrap">
           <button class="video-facade" id="videoFacade" type="button" aria-label="ניגון הסרטון: מה זה TRE">
-            <img src="https://img.youtube.com/vi/9Flm8v8IKCg/hqdefault.jpg" alt="" loading="lazy" aria-hidden="true" />
+            <img src="https://img.youtube.com/vi/1PT1crBhhUE/hqdefault.jpg" alt="" loading="lazy" aria-hidden="true" />
             <span class="video-play-btn" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </span>
           </button>
         </div>
-        <p class="video-subs idle" id="videoSubs">הכתוביות בעברית יופיעו כאן בזמן הניגון</p>
       </div>
       <p class="video-disclaimer">
-        הסרטון הוא המחשה קצרה של מפתח השיטה. התגובות לתרגול משתנות מאדם לאדם, ו־TRE אינו תחליף לטיפול רפואי או נפשי.
+        הכתוביות בעברית מתורגמות אוטומטית על ידי יוטיוב, ולכן ייתכנו בהן אי־דיוקים. התגובות לתרגול משתנות מאדם לאדם, ו־TRE אינו תחליף לטיפול רפואי או נפשי.
       </p>
     </div>
   </section>
@@ -1413,35 +1399,22 @@
     // First time a form field gets focus
     form.addEventListener('focusin', () => trackOnce('Form_Started'), { once: true });
 
-    // ============ VIDEO: in-page player + Hebrew subtitles ============
-    // Dr. David Berceli's animated explainer has no narration, only English text drawn
-    // on screen, so the Hebrew cues below translate that text: [start, end, text] in seconds.
-    const VIDEO_ID = '9Flm8v8IKCg';
-    const SUBS = [
-      [3.5, 8.3, 'תרגילים לשחרור מתח וטראומה'],
-      [11.5, 16.8, 'TRE® — שחרור דפוסים שריריים עמוקים של סטרס, מתח וטראומה'],
-      [16.8, 20.8, 'TRE® מפעיל מנגנון רפלקס טבעי'],
-      [20.8, 26.8, 'שמשחרר מתח שרירי, ובעקבות זאת מרגיע את מערכת העצבים'],
-      [28.5, 47.5, 'מצב של איזון'],
-      [52, 56, 'TRE® — הקלה בסטרס ובמתח'],
-      [56, 59.8, 'שיווי משקל'],
-      [68, 77.8, 'מנגנון טבעי'],
-      [88, 94.8, 'מצב של עייפות — לא של תשישות'],
-      [101, 108.8, 'בערך 20 הדקות הבאות'],
-      [109.5, 118.8, 'טראומה ✗ · מתח ✗'],
-      [133, 140.8, 'פוסט־טראומה (PTSD) ✗'],
-      [141, 148.8, 'סטרס'],
-      [149.5, 160.5, 'TRE® — הקלה בסטרס ובמתח'],
-      [160.5, 170, '© Mental Joe. כל הזכויות שמורות.'],
-    ];
+    // ============ VIDEO: in-page player with YouTube's auto-translated Hebrew captions ============
+    // Animated 5-minute introduction to TRE (TRE for Africa Foundation). The video has English
+    // auto-captions; we ask the player to show them auto-translated into Hebrew.
+    const VIDEO_ID = '1PT1crBhhUE';
     const videoFacade = document.getElementById('videoFacade');
-    const videoSubs = document.getElementById('videoSubs');
-    let ytPlayer = null, subTimer = null;
+    let ytPlayer = null;
 
-    function showSub(t) {
-      const cue = SUBS.find(c => t >= c[0] && t < c[1]);
-      const text = cue ? cue[2] : '';
-      if (videoSubs.textContent !== text) videoSubs.textContent = text;
+    function enableHebrewCaptions() {
+      if (!ytPlayer || !ytPlayer.setOption) return;
+      try {
+        ytPlayer.loadModule('captions');
+        ytPlayer.setOption('captions', 'track', {
+          languageCode: 'en', kind: 'asr',
+          translationLanguage: { languageCode: 'iw', languageName: 'Hebrew' },
+        });
+      } catch (e) { /* captions are a bonus; the video still plays */ }
     }
     function loadYouTubeApi() {
       return new Promise((resolve, reject) => {
@@ -1471,22 +1444,17 @@
         const holder = document.createElement('div');
         holder.id = 'ytPlayer';
         videoFacade.replaceWith(holder);
-        videoSubs.classList.remove('idle');
-        videoSubs.textContent = '';
+        let captionsSet = false;
         ytPlayer = new YT.Player('ytPlayer', {
           videoId: VIDEO_ID,
-          host: 'https://www.youtube-nocookie.com',
-          playerVars: { autoplay: 1, rel: 0, playsinline: 1, cc_load_policy: 0, iv_load_policy: 3 },
+          playerVars: { autoplay: 1, rel: 0, playsinline: 1, iv_load_policy: 3, cc_load_policy: 1, cc_lang_pref: 'iw', hl: 'iw' },
           events: {
             onReady: (e) => e.target.playVideo(),
+            onApiChange: () => enableHebrewCaptions(),
             onStateChange: (e) => {
-              clearInterval(subTimer);
-              if (e.data === YT.PlayerState.PLAYING) {
-                subTimer = setInterval(() => showSub(ytPlayer.getCurrentTime()), 200);
-              } else if (e.data === YT.PlayerState.ENDED) {
-                videoSubs.textContent = '';
-              } else {
-                showSub(ytPlayer.getCurrentTime());
+              if (e.data === YT.PlayerState.PLAYING && !captionsSet) {
+                captionsSet = true;
+                enableHebrewCaptions();
               }
             },
             onError: (e) => { if (e.data === 101 || e.data === 150) openOnYouTube(); },
