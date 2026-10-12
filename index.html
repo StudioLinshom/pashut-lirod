@@ -36,21 +36,31 @@
     src="https://www.facebook.com/tr?id=27499768226285774&ev=PageView&noscript=1"
     alt="" /></noscript>
   <!-- End Meta Pixel Code -->
+  <script>document.documentElement.classList.add('js');</script>
   <style>
     :root {
       --bg: #F4F7F8;
       --bg-card: #FFFFFF;
-      --bg-warm: #FAF7F1;
+      --bg-warm: #EFE6D6;
       --ink: #2F3E46;
-      --ink-soft: #5A6B72;
-      --ink-mute: #8A999F;
+      --ink-soft: #45545B;
+      --ink-mute: #55646A;
       --mist: #A8C4CE;
       --mist-deep: #7BA3B2;
       --cream: #F3E9D8;
       --amber: #D99A5B;
       --amber-deep: #BE8049;
+      /* Text-safe accent and the primary action (both ≥4.5:1 with white / on cream) */
+      --accent-text: #8F5426;
+      --action: #8F5426;
+      --action-hover: #7A4520;
+      /* The one dark moment: testimonials band */
+      --deep: #2E4A57;
+      --deep-card: #385866;
+      --on-deep: #F6EFE3;
+      --on-deep-soft: #D6E1E5;
       --line: rgba(47, 62, 70, 0.12);
-      --line-strong: rgba(47, 62, 70, 0.22);
+      --line-strong: rgba(47, 62, 70, 0.24);
       --error: #B4593F;
       --radius: 18px;
       --radius-lg: 28px;
@@ -85,8 +95,11 @@
       margin: 0 0 0.5em;
     }
     p { margin: 0 0 1em; }
-    a { color: var(--amber-deep); text-decoration: none; border-bottom: 2px solid transparent; transition: border-color 0.2s, color 0.2s; }
+    a { color: var(--accent-text); text-decoration: none; border-bottom: 2px solid transparent; transition: border-color 0.2s, color 0.2s; }
     a:hover { border-bottom-color: var(--amber); }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--mist-deep); outline-offset: 3px; border-radius: 8px;
+    }
 
     .container { max-width: 880px; margin-inline: auto; padding-inline: 24px; }
 
@@ -138,10 +151,9 @@
 
     .eyebrow {
       display: inline-block;
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      color: var(--amber-deep);
-      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      color: var(--accent-text);
       font-weight: 700;
       margin-bottom: 22px;
       padding: 7px 18px;
@@ -149,7 +161,7 @@
       border-radius: 100px;
       background: var(--bg-card);
     }
-    @media (max-width: 480px) { .eyebrow { font-size: 12px; letter-spacing: 0.04em; padding: 7px 14px; } }
+    @media (max-width: 480px) { .eyebrow { font-size: 14px; letter-spacing: 0; padding: 7px 14px; } }
 
     .hero h1 {
       font-family: 'Frank Ruhl Libre', serif;
@@ -174,7 +186,7 @@
       padding: 10px 18px;
       background: var(--bg-card);
       border: 1.5px solid var(--line-strong); border-radius: 100px;
-      font-size: 14px; color: var(--ink); font-weight: 600;
+      font-size: 15px; color: var(--ink); font-weight: 600;
       box-shadow: var(--shadow-sm);
     }
     .meta-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mist-deep); }
@@ -187,23 +199,23 @@
     /* ============ CTA BUTTONS ============ */
     .cta-btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 16px 34px;
-      background: var(--amber); color: #fff;
+      padding: 18px 40px; min-height: 58px;
+      background: var(--action); color: #fff;
       border-radius: 100px;
-      font-family: inherit; font-size: 16.5px; font-weight: 700;
+      font-family: inherit; font-size: 18px; font-weight: 700;
       box-shadow: var(--shadow-md);
       transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
     }
-    .cta-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); background: var(--amber-deep); border-bottom-color: transparent; }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); background: var(--action-hover); border-bottom-color: transparent; }
     .cta-btn::after { content: '←'; }
     .hero .cta-btn { margin-top: 34px; }
     .cta-center { text-align: center; margin-top: 40px; }
     .cta-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 16px; font-weight: 600;
-      color: var(--amber-deep);
-      border-bottom: 2px solid var(--amber);
-      padding-bottom: 2px;
+      display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+      font-size: 17px; font-weight: 700;
+      color: var(--accent-text);
+      text-decoration: underline; text-decoration-color: var(--amber);
+      text-decoration-thickness: 2px; text-underline-offset: 6px;
     }
     .cta-link::after { content: '←'; transition: transform 0.2s; }
     .cta-link:hover::after { transform: translateX(-3px); }
@@ -215,7 +227,7 @@
 
     .section-title { font-size: clamp(30px, 4.5vw, 44px); margin-bottom: 24px; }
     .title-mark--mist { background: linear-gradient(transparent 60%, var(--mist) 60%); display: inline-block; padding: 0 6px; }
-    .title-mark--amber { background: linear-gradient(transparent 60%, var(--cream) 60%); display: inline-block; padding: 0 6px; }
+    .title-mark--amber { background: linear-gradient(transparent 60%, rgba(217, 154, 91, 0.38) 60%); display: inline-block; padding: 0 6px; }
 
     .center { text-align: center; }
 
@@ -253,7 +265,7 @@
       box-shadow: var(--shadow-md);
       border: 1px solid var(--line);
     }
-    .opening-quote .mark { color: var(--amber-deep); }
+    .opening-quote .mark { color: var(--accent-text); }
 
     /* ============ ATMOSPHERE IMAGES ============ */
     .atmo-figure {
@@ -280,12 +292,11 @@
       display: flex; gap: 14px; align-items: flex-start;
       padding: 20px 22px;
       background: var(--bg-card);
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-strong);
       border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-      font-size: 15.5px; line-height: 1.65; color: var(--ink-soft);
+      font-size: 16.5px; line-height: 1.65; color: var(--ink-soft);
     }
-    .tre-facts li strong { display: block; color: var(--ink); font-size: 16.5px; margin-bottom: 2px; }
+    .tre-facts li strong { display: block; color: var(--ink); font-size: 17.5px; margin-bottom: 2px; }
     .fact-icon {
       flex-shrink: 0;
       width: 42px; height: 42px; border-radius: 50%;
@@ -293,11 +304,11 @@
       display: flex; align-items: center; justify-content: center;
     }
     .tre-facts li:nth-child(2n) .fact-icon { background: rgba(168, 196, 206, 0.45); }
-    .fact-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--amber-deep); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fact-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--accent-text); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .tre-facts li:nth-child(2n) .fact-icon svg { stroke: var(--ink); }
     .tre-note {
       max-width: 640px; margin: 30px auto 0; text-align: center;
-      color: var(--ink-soft); font-size: 16.5px; line-height: 1.8;
+      color: var(--ink-soft); font-size: 17px; line-height: 1.8;
     }
 
     /* ============ VIDEO ============ */
@@ -328,7 +339,7 @@
     .video-play-btn {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
       width: 78px; height: 78px; border-radius: 50%;
-      background: var(--amber);
+      background: var(--action);
       display: flex; align-items: center; justify-content: center;
       box-shadow: var(--shadow-lg);
       transition: transform 0.2s;
@@ -347,11 +358,11 @@
       font-size: clamp(16px, 2.4vw, 21px); font-weight: 500; line-height: 1.4;
       box-shadow: var(--shadow-lg);
     }
-    .video-subs.idle { color: rgba(255, 255, 255, 0.6); font-size: 14.5px; font-weight: 400; }
+    .video-subs.idle { color: rgba(255, 255, 255, 0.78); font-size: 15px; font-weight: 400; }
     @media (max-width: 370px) { .video-subs { font-size: 15px; padding-inline: 14px; } }
     .video-disclaimer {
       max-width: 620px; margin: 14px auto 0; text-align: center;
-      color: var(--ink-mute); font-size: 13.5px; line-height: 1.65;
+      color: var(--ink-mute); font-size: 15px; line-height: 1.65;
     }
 
     /* ============ CARDS (what you take) ============ */
@@ -367,8 +378,7 @@
       flex: 1 1 230px; max-width: 264px;
       padding: 28px 24px; border-radius: var(--radius);
       background: var(--bg-card);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line-strong);
       transition: box-shadow 0.2s, transform 0.2s;
     }
     .process-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
@@ -380,12 +390,12 @@
       font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 17px;
       margin-bottom: 14px;
     }
-    .process-card:nth-child(2) .process-num { background: var(--cream); color: var(--amber-deep); }
-    .process-card:nth-child(3) .process-num { background: var(--mist-deep); color: #fff; }
-    .process-card:nth-child(4) .process-num { background: var(--amber); color: #fff; }
+    .process-card:nth-child(2) .process-num { background: var(--cream); color: var(--accent-text); }
+    .process-card:nth-child(3) .process-num { background: var(--deep); color: #fff; }
+    .process-card:nth-child(4) .process-num { background: var(--action); color: #fff; }
     .process-card:nth-child(5) .process-num { background: var(--ink); color: #fff; }
     .process-card h3 { font-size: 18.5px; margin-bottom: 8px; }
-    .process-card p { font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin: 0; }
+    .process-card p { font-size: 16.5px; line-height: 1.7; color: var(--ink-soft); margin: 0; }
     @media (max-width: 600px) { .process-card { max-width: none; } }
 
     /* ============ AUDIENCE ============ */
@@ -398,7 +408,7 @@
       padding: 16px 20px;
       background: var(--bg-card);
       border: 1px solid var(--line-strong); border-radius: 14px;
-      font-size: 16.5px; line-height: 1.65;
+      font-size: 17px; line-height: 1.65;
       color: var(--ink-soft);
     }
     .audience-list li::before {
@@ -418,11 +428,11 @@
     }
     .good-to-know h3 { font-size: 18px; margin-bottom: 10px; }
     .good-to-know ul { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 8px; }
-    .good-to-know li { font-size: 16px; line-height: 1.65; color: var(--ink-soft); padding-inline-start: 26px; position: relative; }
-    .good-to-know li::before { content: '✓'; position: absolute; inset-inline-start: 0; color: var(--amber-deep); font-weight: 700; }
+    .good-to-know li { font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); padding-inline-start: 26px; position: relative; }
+    .good-to-know li::before { content: '✓'; position: absolute; inset-inline-start: 0; color: var(--accent-text); font-weight: 700; }
     .good-to-know li strong { color: var(--ink); }
-    .good-to-know .fine { font-size: 14px; color: var(--ink-mute); margin: 0; line-height: 1.6; }
-    .good-to-know .fine a { color: var(--amber-deep); border-bottom: 1px solid var(--amber); }
+    .good-to-know .fine { font-size: 15px; color: var(--ink-mute); margin: 0; line-height: 1.6; }
+    .good-to-know .fine a { color: var(--accent-text); border-bottom: 1px solid var(--accent-text); }
 
     /* ============ SMALL GROUP ============ */
     .group-wrap {
@@ -438,32 +448,33 @@
       box-shadow: var(--shadow-md);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
-    .group-badge .num { font-family: 'Frank Ruhl Libre', serif; font-weight: 900; font-size: 34px; color: var(--amber-deep); line-height: 1; }
-    .group-badge .label { font-size: 11px; color: var(--ink-mute); margin-top: 2px; }
+    .group-badge .num { font-family: 'Frank Ruhl Libre', serif; font-weight: 900; font-size: 34px; color: var(--accent-text); line-height: 1; }
+    .group-badge .label { font-size: 14px; color: var(--ink-mute); margin-top: 2px; }
     .group-text { flex: 1; min-width: 240px; }
-    .group-text p { color: var(--ink-soft); font-size: 16.5px; line-height: 1.75; margin: 0 0 0.8em; }
+    .group-text p { color: var(--ink-soft); font-size: 17px; line-height: 1.75; margin: 0 0 0.8em; }
     .group-text p:last-child { margin-bottom: 0; }
     @media (max-width: 480px) { .group-wrap { justify-content: center; text-align: center; } }
 
-    /* ============ TESTIMONIALS ============ */
+    /* ============ TESTIMONIALS (the page's one dark band) ============ */
+    .testimonials.section-alt { background: var(--deep); padding: 76px 0 72px; }
+    @media (max-width: 600px) { .testimonials.section-alt { padding: 56px 0 52px; } }
+    .testimonials .section-title { color: var(--on-deep); }
+    .testimonials .title-mark--amber { background: linear-gradient(transparent 62%, rgba(143, 84, 38, 0.8) 62%); }
     .testimonials-lead {
       text-align: center; max-width: 600px; margin: 0 auto 34px;
-      color: var(--ink-soft); font-size: 16.5px; line-height: 1.75;
+      color: var(--on-deep-soft); font-size: 17px; line-height: 1.75;
     }
     .quote-featured {
       position: relative;
-      max-width: 700px; margin: 0 auto 24px;
-      padding: 38px 36px 28px;
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--line);
+      max-width: 720px; margin: 0 auto 30px;
+      padding: 40px 24px 8px;
       text-align: center;
     }
     .quote-featured blockquote {
       margin: 0 0 14px;
       font-family: 'Frank Ruhl Libre', serif; font-weight: 700;
-      font-size: clamp(21px, 2.8vw, 27px); line-height: 1.55; color: var(--ink);
+      font-size: clamp(24px, 3.4vw, 34px); line-height: 1.5; color: var(--on-deep);
+      text-wrap: balance;
     }
     .quotes-grid {
       display: grid; gap: 18px;
@@ -473,28 +484,34 @@
     .quote-card {
       position: relative;
       margin: 0;
-      padding: 30px 24px 20px;
-      background: var(--bg-card);
+      padding: 32px 24px 22px;
+      background: var(--deep-card);
       border-radius: var(--radius);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(246, 239, 227, 0.14);
       display: flex; flex-direction: column; gap: 12px;
     }
     .quote-card blockquote {
       margin: 0;
       font-family: 'Frank Ruhl Libre', serif; font-weight: 500;
-      font-size: 17px; line-height: 1.6; color: var(--ink);
+      font-size: 18px; line-height: 1.6; color: var(--on-deep);
     }
     .quote-featured::before, .quote-card::before {
       content: '\201D';
       position: absolute; top: -6px; inset-inline-start: 18px;
       font-family: 'Frank Ruhl Libre', serif; font-size: 64px; line-height: 1;
-      color: var(--mist-deep); opacity: 0.55;
+      color: #E4B98C; opacity: 0.85;
       pointer-events: none;
     }
-    .quote-attr { font-size: 13px; color: var(--ink-mute); margin-top: auto; }
-    .quotes-more { text-align: center; margin-top: 26px; font-size: 14.5px; }
-    .quotes-more a { color: var(--ink-mute); border-bottom: 1px solid var(--line-strong); }
+    .quote-featured::before { inset-inline-start: 50%; transform: translateX(50%); }
+    .quote-attr { font-size: 14px; color: var(--on-deep-soft); margin-top: auto; }
+    .quotes-more { text-align: center; margin-top: 26px; font-size: 16px; }
+    .quotes-more a {
+      display: inline-flex; align-items: center; min-height: 44px;
+      color: var(--on-deep); font-weight: 600;
+      text-decoration: underline; text-decoration-color: rgba(246, 239, 227, 0.55);
+      text-decoration-thickness: 1px; text-underline-offset: 6px;
+    }
+    .quotes-more a:hover { border-bottom-color: transparent; text-decoration-color: var(--on-deep); }
 
     /* ============ DETAILS (dates + price) ============ */
     .date-medallions {
@@ -526,8 +543,8 @@
     .spec-row { display: grid; grid-template-columns: 100px 1fr; gap: 18px; align-items: baseline; }
     @media (max-width: 600px) { .spec-row { grid-template-columns: 1fr; gap: 2px; } }
     .spec-row dt {
-      font-weight: 700; color: var(--amber-deep);
-      font-size: 13px; letter-spacing: 0.04em;
+      font-weight: 700; color: var(--accent-text);
+      font-size: 14.5px; letter-spacing: 0.02em;
     }
     .spec-row dd { margin: 0; color: var(--ink); font-size: 16.5px; line-height: 1.7; }
     .price-badges {
@@ -554,13 +571,13 @@
     }
     .price-ribbon {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: var(--amber); color: #fff;
-      padding: 5px 16px; border-radius: 100px;
-      font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em;
+      background: var(--action); color: #fff;
+      padding: 6px 16px; border-radius: 100px;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
       white-space: nowrap;
       box-shadow: var(--shadow-sm);
     }
-    .price-label { font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--ink-mute); }
+    .price-label { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--ink-mute); }
     .price-amount {
       font-family: 'Frank Ruhl Libre', serif; font-weight: 900;
       font-size: 34px; line-height: 1;
@@ -574,16 +591,15 @@
     }
     .pricing-note {
       text-align: center; max-width: 620px; margin: 28px auto 0;
-      color: var(--ink-mute); font-size: 14.5px; line-height: 1.75;
+      color: var(--ink-mute); font-size: 15.5px; line-height: 1.75;
     }
 
     /* ============ FAQ ============ */
     .faq-list { max-width: 720px; margin: 34px auto 0; display: grid; gap: 12px; }
     .faq-item {
       background: var(--bg-card);
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-strong);
       border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
       overflow: hidden;
     }
     .faq-item summary {
@@ -591,21 +607,21 @@
       cursor: pointer;
       padding: 18px 22px;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      font-weight: 600; font-size: 16.5px; color: var(--ink);
+      font-weight: 600; font-size: 17px; color: var(--ink);
     }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item summary::after {
       content: '+';
       flex-shrink: 0;
       width: 28px; height: 28px; border-radius: 50%;
-      background: var(--cream); color: var(--amber-deep);
+      background: var(--cream); color: var(--accent-text);
       display: flex; align-items: center; justify-content: center;
       font-size: 20px; font-weight: 400; line-height: 1;
       transition: transform 0.2s;
     }
     .faq-item[open] summary::after { content: '−'; }
     .faq-item summary:focus-visible { outline: 2px solid var(--mist-deep); outline-offset: -2px; }
-    .faq-item .faq-answer { padding: 0 22px 20px; color: var(--ink-soft); font-size: 16px; line-height: 1.75; }
+    .faq-item .faq-answer { padding: 0 22px 20px; color: var(--ink-soft); font-size: 17px; line-height: 1.75; }
     .faq-item .faq-answer p { margin: 0; }
 
     /* ============ FORM ============ */
@@ -622,13 +638,13 @@
     }
     @media (max-width: 600px) { .form-card { padding: 38px 26px; } }
     .form-card h2 { text-align: center; margin-bottom: 8px; }
-    .form-card .form-lead { text-align: center; color: var(--ink-soft); margin-bottom: 32px; font-size: 16px; }
+    .form-card .form-lead { text-align: center; color: var(--ink-soft); margin-bottom: 32px; font-size: 17px; }
     .field { margin-bottom: 22px; }
-    .field label { display: block; font-size: 14px; font-weight: 600; color: var(--ink-soft); margin-bottom: 8px; }
+    .field label { display: block; font-size: 15.5px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
     .field input, .field select {
-      width: 100%; padding: 14px 18px;
-      border: 1.5px solid var(--line-strong); border-radius: 12px;
-      font-family: inherit; font-size: 16px; color: var(--ink);
+      width: 100%; padding: 14px 18px; min-height: 52px;
+      border: 1.5px solid rgba(47, 62, 70, 0.34); border-radius: 12px;
+      font-family: inherit; font-size: 17px; color: var(--ink);
       background: var(--bg);
       transition: box-shadow 0.2s, border-color 0.2s;
       -webkit-appearance: none; appearance: none;
@@ -643,21 +659,21 @@
       border-color: var(--mist-deep);
       box-shadow: 0 0 0 3px rgba(122, 163, 178, 0.28);
     }
-    .field .error { display: none; color: var(--error); font-size: 13px; margin-top: 6px; font-weight: 600; }
+    .field .error { display: none; color: var(--error); font-size: 14px; margin-top: 6px; font-weight: 600; }
     .field.has-error .error { display: block; }
     .field.has-error input, .field.has-error select { border-color: var(--error); }
     .submit-btn {
       width: 100%; padding: 18px;
-      background: var(--amber); color: #fff; border: none;
+      background: var(--action); color: #fff; border: none;
       border-radius: 100px;
-      font-family: inherit; font-size: 17px; font-weight: 700;
+      font-family: inherit; font-size: 18px; font-weight: 700;
       cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
       box-shadow: var(--shadow-sm);
       margin-top: 10px;
     }
-    .submit-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); background: var(--amber-deep); }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); background: var(--action-hover); }
     .submit-btn svg { width: 22px; height: 22px; fill: currentColor; }
     .soft-cta-btn {
       display: block;
@@ -669,14 +685,14 @@
       color: var(--ink);
       border-radius: 100px;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
       transition: background 0.2s, border-color 0.2s;
     }
     .soft-cta-btn:hover { background: var(--bg-warm); border-color: var(--mist-deep); }
-    .form-note { text-align: center; color: var(--ink-mute); font-size: 13px; margin-top: 18px; line-height: 1.6; }
+    .form-note { text-align: center; color: var(--ink-mute); font-size: 15px; margin-top: 18px; line-height: 1.6; }
 
     /* ============ INSTRUCTOR ============ */
     .instructor-wrap {
@@ -703,14 +719,15 @@
       font-family: 'Frank Ruhl Libre', serif; font-weight: 700;
       font-size: 30px; margin-bottom: 18px; color: var(--ink);
     }
-    .instructor-role { color: var(--amber-deep); font-size: 14.5px; font-weight: 600; margin: -10px 0 18px; }
-    .instructor-bio p { color: var(--ink-soft); font-size: 16px; line-height: 1.85; margin-bottom: 14px; }
+    .instructor-role { color: var(--accent-text); font-size: 15.5px; font-weight: 600; margin: -10px 0 18px; }
+    .instructor-bio p { color: var(--ink-soft); font-size: 17px; line-height: 1.85; margin-bottom: 14px; }
     .instructor-bio p strong { color: var(--ink); font-weight: 500; }
     .instructor-more {
-      display: inline-flex; align-items: center; gap: 6px;
-      margin-top: 6px; font-size: 15px; font-weight: 600;
-      color: var(--amber-deep);
-      border-bottom: 2px solid var(--amber);
+      display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+      margin-top: 2px; font-size: 16px; font-weight: 700;
+      color: var(--accent-text);
+      text-decoration: underline; text-decoration-color: var(--amber);
+      text-decoration-thickness: 2px; text-underline-offset: 6px;
     }
     .instructor-more::after { content: '←'; transition: transform 0.2s; }
     .instructor-more:hover::after { transform: translateX(-3px); }
@@ -728,7 +745,6 @@
       font-size: clamp(20px, 2.6vw, 26px);
       line-height: 1.65; color: var(--ink);
       max-width: 640px; margin: 0 auto 28px;
-      font-style: italic;
     }
     .closing-mark {
       display: block; width: 60px; height: 4px;
@@ -738,7 +754,7 @@
     .closing-final {
       font-family: 'Frank Ruhl Libre', serif; font-weight: 700;
       font-size: clamp(22px, 3vw, 30px);
-      line-height: 1.5; color: var(--amber-deep);
+      line-height: 1.5; color: var(--accent-text);
       max-width: 640px; margin: 0 auto 36px;
     }
 
@@ -751,8 +767,8 @@
     footer .container { max-width: 600px; }
     footer h3 { color: var(--ink); font-size: 24px; margin-bottom: 14px; }
     footer p { color: var(--ink-soft); font-size: 15px; margin-bottom: 8px; }
-    footer a { color: var(--amber-deep); }
-    footer a:hover { border-bottom-color: var(--amber-deep); }
+    footer a { color: var(--accent-text); display: inline-block; padding: 10px 2px; font-weight: 600; }
+    footer a:hover { border-bottom-color: var(--accent-text); }
     .footer-divider { width: 50px; height: 3px; background: var(--mist); margin: 24px auto; border-radius: 2px; }
 
     /* ============ VALIDATION MODAL ============ */
@@ -783,7 +799,7 @@
       background: var(--cream);
       display: inline-flex; align-items: center; justify-content: center;
       margin: 0 auto 18px;
-      color: var(--amber-deep);
+      color: var(--accent-text);
     }
     .modal-icon svg { width: 28px; height: 28px; }
     .modal-title {
@@ -797,15 +813,15 @@
       margin: 0 0 28px;
     }
     .modal-close-btn {
-      background: var(--amber); color: #fff;
+      background: var(--action); color: #fff;
       border: none; border-radius: 100px;
-      padding: 12px 36px;
-      font-family: inherit; font-size: 15px; font-weight: 700;
+      padding: 13px 38px; min-height: 48px;
+      font-family: inherit; font-size: 16px; font-weight: 700;
       cursor: pointer;
       transition: transform 0.15s, background 0.15s;
       box-shadow: var(--shadow-sm);
     }
-    .modal-close-btn:hover { transform: translateY(-2px); background: var(--amber-deep); }
+    .modal-close-btn:hover { transform: translateY(-2px); background: var(--action-hover); }
 
     /* ============ STICKY CTA ============ */
     .sticky-cta {
@@ -818,17 +834,17 @@
     .sticky-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .sticky-cta a {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 26px;
-      background: var(--amber); color: #fff;
+      padding: 15px 28px;
+      background: var(--action); color: #fff;
       border: none; border-radius: 100px;
-      font-family: inherit; font-size: 15px; font-weight: 700;
+      font-family: inherit; font-size: 16px; font-weight: 700;
       box-shadow: var(--shadow-md);
       letter-spacing: 0.02em;
       transition: transform 0.15s, background 0.15s;
     }
     .sticky-cta a:hover {
       transform: translateY(-2px);
-      background: var(--amber-deep);
+      background: var(--action-hover);
     }
     .sticky-cta a::after { content: '←'; font-size: 16px; }
     @media (max-width: 600px) {
@@ -865,15 +881,15 @@
     }
 
     /* ============ ANIMATIONS ============ */
-    .reveal { opacity: 0; transform: translateY(20px) rotate(var(--rot, 0deg)); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.in { opacity: 1; transform: rotate(var(--rot, 0deg)); }
+    .js .reveal { opacity: 0; transform: translateY(20px) rotate(var(--rot, 0deg)); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .js .reveal.in { opacity: 1; transform: rotate(var(--rot, 0deg)); }
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: rotate(var(--rot, 0deg)); transition: none; }
+      .js .reveal { opacity: 1; transform: rotate(var(--rot, 0deg)); transition: none; }
       html { scroll-behavior: auto; }
     }
 
     @media (max-width: 600px) {
-      body { font-size: 16px; }
+      body { font-size: 17px; }
       .hero { padding: 92px 0 76px; }
     }
   </style>
@@ -1244,7 +1260,7 @@
       <p>בהנחיית פדית ציבייר · "סטודיו לנשום"</p>
       <div class="footer-divider"></div>
       <p>שאלות? כתבו בוואטסאפ ל-<a href="https://wa.me/972548111353" target="_blank" rel="noopener"><bdi dir="ltr">054-8111353</bdi></a></p>
-      <p style="font-size: 12px; opacity: 0.6; margin-top: 18px;">דף זה משתמש ב-Meta Pixel למטרות סטטיסטיקה ופרסום.</p>
+      <p style="font-size: 14px; color: var(--ink-mute); margin-top: 18px;">דף זה משתמש ב-Meta Pixel למטרות סטטיסטיקה ופרסום.</p>
     </div>
   </footer>
 
@@ -1621,7 +1637,7 @@
     const scrollArrow = document.querySelector('.scroll-arrow');
     if (scrollArrow) {
       window.addEventListener('scroll', () => {
-        const nearBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 100;
+        const nearBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 420;
         scrollArrow.classList.toggle('hidden', nearBottom);
       }, { passive: true });
       scrollArrow.addEventListener('click', () => {
