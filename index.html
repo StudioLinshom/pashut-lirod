@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="facebook-domain-verification" content="695vr6h2rzzmnzwca4fivqnj1er8yc" />
-  <meta name="description" content="פשוט לרעוד — ארבעה מפגשים ללימוד ותרגול TRE. דרך טבעית לשחרור מתח עמוק, ויסות מערכת העצבים והרפיה דרך הגוף. בהנחיית פדית ציבייר. ימי שלישי בנובמבר 2026, סביון." />
+  <meta name="description" content="פשוט לרעוד — סדנה ללימוד שיטת TRE בארבעה מפגשים. דרך גופנית חדשה ומפתיעה להוריד מתח ולהרפות, דרך הרעד הטבעי של הגוף. בהנחיית פדית ציבייר. ימי שלישי בנובמבר 2026, סביון." />
   <meta property="og:title" content="פשוט לרעוד — ארבעה מפגשים ללימוד ותרגול TRE" />
-  <meta property="og:description" content="דרך טבעית לשחרור מתח עמוק, ויסות מערכת העצבים והרפיה דרך הגוף. בהנחיית פדית ציבייר. ימי שלישי בנובמבר 2026, סביון." />
+  <meta property="og:description" content="דרך גופנית חדשה ומפתיעה להוריד מתח ולהרפות — דרך הרעד הטבעי של הגוף. סדנה ללימוד TRE בהנחיית פדית ציבייר. ימי שלישי בנובמבר 2026, סביון." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://studiolinshom.github.io/pashut-lirod/" />
   <meta property="og:image" content="https://studiolinshom.github.io/pashut-lirod/studio-logo.png" />
@@ -147,6 +147,7 @@
       border-radius: 100px;
       background: var(--bg-card);
     }
+    @media (max-width: 480px) { .eyebrow { font-size: 12px; letter-spacing: 0.04em; padding: 7px 14px; } }
 
     .hero h1 {
       font-family: 'Frank Ruhl Libre', serif;
@@ -177,6 +178,33 @@
     .meta-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mist-deep); }
     .meta-pill:nth-child(2) .dot { background: var(--amber); }
     .meta-pill:nth-child(3) .dot { background: var(--ink-mute); }
+    .meta-pill:nth-child(4) .dot { background: var(--amber-deep); }
+
+    [hidden] { display: none !important; }
+
+    /* ============ CTA BUTTONS ============ */
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 34px;
+      background: var(--amber); color: #fff;
+      border-radius: 100px;
+      font-family: inherit; font-size: 16.5px; font-weight: 700;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); background: var(--amber-deep); border-bottom-color: transparent; }
+    .cta-btn::after { content: '←'; }
+    .hero .cta-btn { margin-top: 34px; }
+    .cta-center { text-align: center; margin-top: 40px; }
+    .cta-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 16px; font-weight: 600;
+      color: var(--amber-deep);
+      border-bottom: 2px solid var(--amber);
+      padding-bottom: 2px;
+    }
+    .cta-link::after { content: '←'; transition: transform 0.2s; }
+    .cta-link:hover::after { transform: translateX(-3px); }
 
     /* ============ SECTIONS ============ */
     section { padding: 44px 0; }
@@ -186,6 +214,8 @@
     .section-title { font-size: clamp(30px, 4.5vw, 44px); margin-bottom: 24px; }
     .title-mark--mist { background: linear-gradient(transparent 60%, var(--mist) 60%); display: inline-block; padding: 0 6px; }
     .title-mark--amber { background: linear-gradient(transparent 60%, var(--cream) 60%); display: inline-block; padding: 0 6px; }
+
+    .center { text-align: center; }
 
     /* ============ OPENING ============ */
     .opening-lead {
@@ -199,23 +229,27 @@
       line-height: 1.85;
       margin: 0 0 1em;
     }
-    .opening-lead p.opening-highlight {
+    .opening-lead p.opening-strong {
       font-family: 'Frank Ruhl Libre', serif;
       font-weight: 700;
-      font-size: clamp(24px, 3.4vw, 34px);
-      line-height: 1.6;
+      font-size: clamp(22px, 3vw, 28px);
+      line-height: 1.55;
       color: var(--ink);
-      margin: 0 0 1.2em;
     }
     .opening-quote {
       max-width: 620px;
-      margin: 44px auto 0;
+      margin: 36px auto;
+      padding: 26px 28px;
       text-align: center;
       font-family: 'Frank Ruhl Libre', serif;
       font-weight: 700;
-      font-size: clamp(22px, 3vw, 30px);
-      line-height: 1.5;
+      font-size: clamp(21px, 2.8vw, 27px);
+      line-height: 1.55;
       color: var(--ink);
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--line);
     }
     .opening-quote .mark { color: var(--amber-deep); }
 
@@ -225,81 +259,111 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-    .atmo-img {
-      width: 100%;
-      border-radius: 16px;
-      object-fit: cover;
-      display: block;
-      box-shadow: var(--shadow-lg);
-    }
     .atmo-figure--logo {
       max-width: 340px;
       margin: 8px auto 0;
     }
     .atmo-figure--logo img { width: 100%; height: auto; display: block; }
-    .atmo-figure--portrait {
-      max-width: 340px;
-      margin: 8px auto 40px;
+    @media (max-width: 600px) { .atmo-figure--logo { max-width: 260px; } }
+
+    /* ============ WHAT IS TRE ============ */
+    .tre-facts {
+      list-style: none; padding: 0;
+      max-width: 760px; margin: 34px auto 0;
+      display: grid; gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
     }
-    .atmo-figure--portrait .atmo-img {
-      transform: rotate(-1deg);
+    @media (max-width: 640px) { .tre-facts { grid-template-columns: 1fr; } }
+    .tre-facts li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 20px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      font-size: 15.5px; line-height: 1.65; color: var(--ink-soft);
     }
-    @media (max-width: 600px) {
-      .atmo-figure--portrait { max-width: 260px; }
-      .atmo-figure--logo { max-width: 260px; }
+    .tre-facts li strong { display: block; color: var(--ink); font-size: 16.5px; margin-bottom: 2px; }
+    .fact-icon {
+      flex-shrink: 0;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tre-facts li:nth-child(2n) .fact-icon { background: rgba(168, 196, 206, 0.45); }
+    .fact-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--amber-deep); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .tre-facts li:nth-child(2n) .fact-icon svg { stroke: var(--ink); }
+    .tre-note {
+      max-width: 640px; margin: 30px auto 0; text-align: center;
+      color: var(--ink-soft); font-size: 16.5px; line-height: 1.8;
     }
 
     /* ============ VIDEO ============ */
     .video-lead {
-      text-align: center; max-width: 600px; margin: 0 auto 28px;
+      text-align: center; max-width: 600px; margin: 44px auto 22px;
       color: var(--ink-soft); font-size: 17px;
     }
+    .video-lead strong { color: var(--ink); }
     .video-wrap {
-      max-width: 640px; margin: 0 auto;
-      border-radius: var(--radius-lg);
+      max-width: 680px; margin: 0 auto;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
       overflow: hidden;
-      box-shadow: var(--shadow-lg);
       border: 1px solid var(--line);
+      border-bottom: none;
       aspect-ratio: 16 / 9;
       position: relative;
-      background: var(--ink);
+      background: #fff;
     }
+    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .video-facade {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       border: none; padding: 0; margin: 0;
       cursor: pointer;
-      background: #000;
+      background: #fff;
     }
-    .video-facade img {
-      width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.85;
-    }
+    .video-facade img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .video-play-btn {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 74px; height: 74px; border-radius: 50%;
-      background: var(--bg-card);
+      width: 78px; height: 78px; border-radius: 50%;
+      background: var(--amber);
       display: flex; align-items: center; justify-content: center;
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-lg);
       transition: transform 0.2s;
     }
     .video-facade:hover .video-play-btn { transform: translate(-50%, -50%) scale(1.06); }
-    .video-play-btn svg { width: 26px; height: 26px; fill: var(--amber-deep); margin-inline-start: 4px; }
-    .video-fallback-link {
-      display: block; text-align: center; margin-top: 16px;
-      font-size: 14.5px; color: var(--ink-mute);
+    .video-play-btn svg { width: 28px; height: 28px; fill: #fff; margin-inline-start: 4px; }
+    .video-facade.loading .video-play-btn { opacity: 0.6; }
+    .video-subs {
+      max-width: 680px; margin: 0 auto;
+      min-height: 64px;
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background: var(--ink); color: #fff;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      font-size: 17px; font-weight: 500; line-height: 1.5;
+      box-shadow: var(--shadow-lg);
+    }
+    .video-subs.idle { color: rgba(255, 255, 255, 0.6); font-size: 14.5px; font-weight: 400; }
+    @media (max-width: 600px) { .video-subs { font-size: 15.5px; min-height: 72px; } }
+    .video-disclaimer {
+      max-width: 620px; margin: 14px auto 0; text-align: center;
+      color: var(--ink-mute); font-size: 13.5px; line-height: 1.65;
     }
 
-    /* ============ PROCESS CARDS ============ */
+    /* ============ CARDS (what you take) ============ */
     .process-lead {
-      max-width: 680px; margin: 0 auto 12px; text-align: center;
+      max-width: 640px; margin: 0 auto; text-align: center;
       color: var(--ink-soft); font-size: 17px; line-height: 1.8;
     }
     .process-grid {
-      display: grid; gap: 24px; margin-top: 46px;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 20px; margin-top: 38px;
     }
     .process-card {
-      padding: 30px 26px; border-radius: var(--radius);
+      flex: 1 1 230px; max-width: 264px;
+      padding: 28px 24px; border-radius: var(--radius);
       background: var(--bg-card);
       border: 1px solid var(--line);
       box-shadow: var(--shadow-sm);
@@ -312,22 +376,24 @@
       background: var(--mist);
       color: var(--ink);
       font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 17px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .process-card:nth-child(2) .process-num { background: var(--cream); color: var(--amber-deep); }
     .process-card:nth-child(3) .process-num { background: var(--mist-deep); color: #fff; }
     .process-card:nth-child(4) .process-num { background: var(--amber); color: #fff; }
-    .process-card h3 { font-size: 18.5px; margin-bottom: 10px; }
+    .process-card:nth-child(5) .process-num { background: var(--ink); color: #fff; }
+    .process-card h3 { font-size: 18.5px; margin-bottom: 8px; }
     .process-card p { font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin: 0; }
+    @media (max-width: 600px) { .process-card { max-width: none; } }
 
     /* ============ AUDIENCE ============ */
     .audience-list {
-      list-style: none; padding: 0; margin: 40px auto 0;
-      max-width: 700px; display: grid; gap: 14px;
+      list-style: none; padding: 0; margin: 34px auto 0;
+      max-width: 700px; display: grid; gap: 12px;
     }
     .audience-list li {
       display: flex; align-items: flex-start; gap: 14px;
-      padding: 18px 22px;
+      padding: 16px 20px;
       background: var(--bg-card);
       border: 1px solid var(--line-strong); border-radius: 14px;
       font-size: 16.5px; line-height: 1.65;
@@ -336,25 +402,30 @@
     .audience-list li::before {
       content: '';
       flex-shrink: 0;
-      width: 22px; height: 22px; margin-top: 1px;
+      width: 22px; height: 22px; margin-top: 2px;
       border-radius: 50%;
       background-color: var(--mist-deep);
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
       background-size: 14px; background-position: center; background-repeat: no-repeat;
     }
-    .audience-note {
-      max-width: 620px; margin: 30px auto 0; text-align: center;
+    .good-to-know {
+      max-width: 700px; margin: 26px auto 0;
       background: var(--cream);
       border-radius: var(--radius);
-      padding: 20px 26px;
-      color: var(--ink-soft);
-      font-size: 15.5px; line-height: 1.7;
+      padding: 22px 26px;
     }
+    .good-to-know h3 { font-size: 18px; margin-bottom: 10px; }
+    .good-to-know ul { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 8px; }
+    .good-to-know li { font-size: 16px; line-height: 1.65; color: var(--ink-soft); padding-inline-start: 26px; position: relative; }
+    .good-to-know li::before { content: '✓'; position: absolute; inset-inline-start: 0; color: var(--amber-deep); font-weight: 700; }
+    .good-to-know li strong { color: var(--ink); }
+    .good-to-know .fine { font-size: 14px; color: var(--ink-mute); margin: 0; line-height: 1.6; }
+    .good-to-know .fine a { color: var(--amber-deep); border-bottom: 1px solid var(--amber); }
 
     /* ============ SMALL GROUP ============ */
     .group-wrap {
       display: flex; align-items: center; justify-content: center; gap: 30px;
-      max-width: 640px; margin: 0 auto; text-align: start;
+      max-width: 660px; margin: 0 auto; text-align: start;
       flex-wrap: wrap;
     }
     .group-badge {
@@ -367,16 +438,69 @@
     }
     .group-badge .num { font-family: 'Frank Ruhl Libre', serif; font-weight: 900; font-size: 34px; color: var(--amber-deep); line-height: 1; }
     .group-badge .label { font-size: 11px; color: var(--ink-mute); margin-top: 2px; }
-    .group-text { flex: 1; min-width: 240px; color: var(--ink-soft); font-size: 16.5px; line-height: 1.75; }
+    .group-text { flex: 1; min-width: 240px; }
+    .group-text p { color: var(--ink-soft); font-size: 16.5px; line-height: 1.75; margin: 0 0 0.8em; }
+    .group-text p:last-child { margin-bottom: 0; }
     @media (max-width: 480px) { .group-wrap { justify-content: center; text-align: center; } }
 
-    /* ============ SPECS ============ */
+    /* ============ TESTIMONIALS ============ */
+    .testimonials-lead {
+      text-align: center; max-width: 600px; margin: 0 auto 34px;
+      color: var(--ink-soft); font-size: 16.5px; line-height: 1.75;
+    }
+    .quote-featured {
+      position: relative;
+      max-width: 700px; margin: 0 auto 24px;
+      padding: 38px 36px 28px;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+    .quote-featured blockquote {
+      margin: 0 0 14px;
+      font-family: 'Frank Ruhl Libre', serif; font-weight: 700;
+      font-size: clamp(21px, 2.8vw, 27px); line-height: 1.55; color: var(--ink);
+    }
+    .quotes-grid {
+      display: grid; gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      max-width: 860px; margin: 0 auto;
+    }
+    .quote-card {
+      position: relative;
+      margin: 0;
+      padding: 30px 24px 20px;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .quote-card blockquote {
+      margin: 0;
+      font-family: 'Frank Ruhl Libre', serif; font-weight: 500;
+      font-size: 17px; line-height: 1.6; color: var(--ink);
+    }
+    .quote-featured::before, .quote-card::before {
+      content: '\201D';
+      position: absolute; top: -6px; inset-inline-start: 18px;
+      font-family: 'Frank Ruhl Libre', serif; font-size: 64px; line-height: 1;
+      color: var(--mist-deep); opacity: 0.55;
+      pointer-events: none;
+    }
+    .quote-attr { font-size: 13px; color: var(--ink-mute); margin-top: auto; }
+    .quotes-more { text-align: center; margin-top: 26px; font-size: 14.5px; }
+    .quotes-more a { color: var(--ink-mute); border-bottom: 1px solid var(--line-strong); }
+
+    /* ============ DETAILS (dates + price) ============ */
     .date-medallions {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
-      margin: 44px 0 40px;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 18px;
+      margin: 34px 0 32px;
     }
     .medallion {
-      width: 88px; height: 88px; border-radius: 50%;
+      width: 84px; height: 84px; border-radius: 50%;
       background: var(--bg-card);
       border: 1.5px solid var(--line-strong);
       box-shadow: var(--shadow-sm);
@@ -386,34 +510,27 @@
       transition: box-shadow 0.2s, transform 0.2s;
     }
     .medallion:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-    .medallion:nth-child(1) { border-color: var(--mist-deep); }
-    .medallion:nth-child(2) { border-color: var(--amber); }
-    .medallion:nth-child(3) { border-color: var(--mist-deep); }
-    .medallion:nth-child(4) { border-color: var(--amber); }
+    .medallion:nth-child(odd) { border-color: var(--mist-deep); }
+    .medallion:nth-child(even) { border-color: var(--amber); }
     .specs-card {
       background: var(--bg-card);
       border: 1px solid var(--line-strong); border-radius: var(--radius-lg);
-      padding: 36px 38px;
-      max-width: 640px; margin: 0 auto;
+      padding: 30px 36px;
+      max-width: 600px; margin: 0 auto;
       box-shadow: var(--shadow-sm);
     }
-    @media (max-width: 600px) { .specs-card { padding: 30px 26px; } }
-    .specs-card dl { margin: 0; display: grid; gap: 20px; }
-    .spec-row { display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: baseline; }
-    @media (max-width: 600px) { .spec-row { grid-template-columns: 1fr; gap: 4px; } }
+    @media (max-width: 600px) { .specs-card { padding: 26px 24px; } }
+    .specs-card dl { margin: 0; display: grid; gap: 16px; }
+    .spec-row { display: grid; grid-template-columns: 100px 1fr; gap: 18px; align-items: baseline; }
+    @media (max-width: 600px) { .spec-row { grid-template-columns: 1fr; gap: 2px; } }
     .spec-row dt {
       font-weight: 700; color: var(--amber-deep);
       font-size: 13px; letter-spacing: 0.04em;
-      text-transform: uppercase;
     }
-    .spec-row dd {
-      margin: 0; color: var(--ink); font-size: 16.5px; line-height: 1.7;
-    }
-
-    /* ============ PRICING ============ */
+    .spec-row dd { margin: 0; color: var(--ink); font-size: 16.5px; line-height: 1.7; }
     .price-badges {
       display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-      gap: 40px; margin: 48px 0 40px;
+      gap: 36px; margin: 44px 0 0;
     }
     .price-badge-circle {
       position: relative;
@@ -424,12 +541,12 @@
       text-align: center;
     }
     .price-badge-circle--main {
-      width: 220px; height: 220px;
+      width: 210px; height: 210px;
       box-shadow: var(--shadow-lg);
       border-color: var(--amber);
     }
     .price-badge-circle--secondary {
-      width: 160px; height: 160px;
+      width: 156px; height: 156px;
       box-shadow: var(--shadow-md);
       border-color: var(--mist-deep);
     }
@@ -437,14 +554,11 @@
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
       background: var(--amber); color: #fff;
       padding: 5px 16px; border-radius: 100px;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em;
       white-space: nowrap;
       box-shadow: var(--shadow-sm);
     }
-    .price-label {
-      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-      font-weight: 700; margin-bottom: 6px; color: var(--ink-mute);
-    }
+    .price-label { font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--ink-mute); }
     .price-amount {
       font-family: 'Frank Ruhl Libre', serif; font-weight: 900;
       font-size: 34px; line-height: 1;
@@ -452,16 +566,45 @@
     }
     .price-badge-circle--secondary .price-amount { font-size: 26px; }
     .price-amount .currency { font-size: 20px; margin-inline-end: 3px; font-weight: 500; }
-    .price-when { font-size: 11.5px; color: var(--ink-mute); margin-top: 4px; }
     @media (max-width: 480px) {
-      .price-badge-circle--main { width: 195px; height: 195px; }
-      .price-badge-circle--secondary { width: 140px; height: 140px; }
+      .price-badge-circle--main { width: 190px; height: 190px; }
+      .price-badge-circle--secondary { width: 138px; height: 138px; }
     }
     .pricing-note {
-      text-align: center; max-width: 620px; margin: 32px auto 0;
+      text-align: center; max-width: 620px; margin: 28px auto 0;
       color: var(--ink-mute); font-size: 14.5px; line-height: 1.75;
-      font-style: italic; font-weight: 300;
     }
+
+    /* ============ FAQ ============ */
+    .faq-list { max-width: 720px; margin: 34px auto 0; display: grid; gap: 12px; }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 22px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      font-weight: 600; font-size: 16.5px; color: var(--ink);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--cream); color: var(--amber-deep);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 400; line-height: 1;
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item summary:focus-visible { outline: 2px solid var(--mist-deep); outline-offset: -2px; }
+    .faq-item .faq-answer { padding: 0 22px 20px; color: var(--ink-soft); font-size: 16px; line-height: 1.75; }
+    .faq-item .faq-answer p { margin: 0; }
 
     /* ============ FORM ============ */
     .form-section {
@@ -558,6 +701,7 @@
       font-family: 'Frank Ruhl Libre', serif; font-weight: 700;
       font-size: 30px; margin-bottom: 18px; color: var(--ink);
     }
+    .instructor-role { color: var(--amber-deep); font-size: 14.5px; font-weight: 600; margin: -10px 0 18px; }
     .instructor-bio p { color: var(--ink-soft); font-size: 16px; line-height: 1.85; margin-bottom: 14px; }
     .instructor-bio p strong { color: var(--ink); font-weight: 500; }
     .instructor-more {
@@ -711,6 +855,8 @@
       cursor: pointer;
     }
     .scroll-arrow.hidden { opacity: 0; }
+    /* On phones the sticky CTA spans the bottom edge; keep the arrow from sitting on top of it */
+    @media (max-width: 600px) { .sticky-on .scroll-arrow { opacity: 0; pointer-events: none; } }
     @keyframes bounce-arrow {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(6px); }
@@ -738,153 +884,221 @@
     <div class="hero-blob-b" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-glow" aria-hidden="true"></div>
-      <span class="eyebrow">ארבעה מפגשים ללימוד ותרגול TRE</span>
+      <span class="eyebrow">סדנה ללימוד שיטת TRE · ארבעה מפגשים</span>
       <h1>פשוט לרעוד</h1>
-      <p class="hero-sub">דרך טבעית לשחרור מתח עמוק, ויסות מערכת העצבים והרפיה דרך הגוף.</p>
+      <p class="hero-sub">דרך גופנית חדשה ומפתיעה להוריד מתח ולהרפות — דרך הרעד הטבעי של הגוף.</p>
       <div class="meta-row">
         <span class="meta-pill"><span class="dot"></span>4 ימי שלישי · נובמבר 2026</span>
         <span class="meta-pill"><span class="dot"></span><bdi dir="ltr">19:00–20:30</bdi></span>
         <span class="meta-pill"><span class="dot"></span>סטודיו בסביון</span>
+        <span class="meta-pill"><span class="dot"></span>עד 10 משתתפים</span>
       </div>
+      <a class="cta-btn" href="#form" data-track="CTA_Click_Hero">אני רוצה ללמוד פשוט לרעוד</a>
     </div>
   </section>
 
-  <!-- OPENING -->
+  <!-- OPENING: recognition -> curiosity -->
   <section class="opening">
     <div class="container">
+      <h2 class="section-title reveal center"><span class="title-mark--mist">מכירים את התחושה הזאת?</span></h2>
       <div class="opening-lead reveal">
-        <p class="opening-highlight">
-          <span class="hl">רוצים לפרוק מתח שהצטבר בגוף, להפחית סטרס ולהרגיש רגועים יותר?</span>
-        </p>
-        <p>
-          גם כשהראש כבר מבין שהכול בסדר, הגוף עדיין מחזיק — מתח, עומס ודריכות שלא תמיד פשוט להרפות מהם.
-        </p>
-        <p>
-          לגוף שלנו יש מנגנון טבעי שעוזר לו לפרוק את המתח הזה ולחזור בהדרגה לאיזון.
-        </p>
+        <p class="opening-strong">הראש כבר רוצה לנוח, אבל הגוף עוד לא קיבל את ההודעה.</p>
+        <p>הכתפיים מכווצות, הנשימה קצרה, ויש תחושה שצריך להיות כל הזמן בכוננות — גם כשבעצם אין סיבה.</p>
+        <p>אנחנו מנסים להירגע: לנשום עמוק, לצאת להליכה, להגיד לעצמנו ״די, תרפה״. ובכל זאת, משהו בגוף ממשיך להחזיק.</p>
       </div>
       <p class="opening-quote reveal">
-        אחד המנגנונים האלה הוא רעד.<br>
-        <span class="mark">וזה בדיוק מה שאנחנו לומדים לפגוש ב־TRE.</span>
+        ומה אם לגוף יש דרך משלו לפרוק את המתח הזה —
+        <span class="mark">דרך שרובנו כמעט לא מכירים?</span>
       </p>
+      <div class="opening-lead reveal">
+        <p>
+          חשבו על הרגע שבו רועדים מקור, מהתרגשות לפני רגע חשוב, או אחרי מאמץ גדול. הרעד הזה הוא תגובה טבעית של הגוף.
+          ב־TRE לומדים להזמין אותו בעדינות ובהדרגה — ולגלות מה קורה כשנותנים לו מקום.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- WHAT IS TRE -->
   <section class="tre-explain section-alt">
     <div class="container">
-      <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--mist">מה זה TRE</span></h2>
+      <h2 class="section-title reveal center"><span class="title-mark--amber">אז מה זה TRE?</span></h2>
       <div class="opening-lead reveal">
         <p>
-          <strong>TRE – Tension &amp; Trauma Releasing Exercises</strong><br>
-          שיטה פשוטה ועמוקה שמאפשרת לגוף להפעיל באופן טבעי רעד עדין ובלתי רצוני.
-        </p>
-        <p>
-          באמצעות סדרה של כמה תרגילים אנחנו מזמינים את הרעד להתעורר ונותנים לגוף לעשות את מה שהוא כבר יודע — לפרוק מתח, להרפות ולשחרר...
-        </p>
-        <p>
-          היופי ב־TRE הוא שלא צריך לדבר, לנתח או להבין מה בדיוק אנחנו מחזיקים בגוף.
-        </p>
-        <p>
-          אנחנו פשוט לומדים להקשיב לו, לאפשר לו לרעוד ולתת לו להוביל את התהליך.
+          <bdi dir="ltr">TRE</bdi> — ראשי התיבות של <bdi dir="ltr">Tension &amp; Trauma Releasing Exercises</bdi> — היא שיטה שפיתח ד״ר דיוויד ברסלי.
+          היא מבוססת על סדרה קצרה של תרגילים פשוטים, שמעודדים רעד שרירי עדין ובלתי רצוני.
         </p>
       </div>
+      <ul class="tre-facts reveal">
+        <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0"/></svg></span><span><strong>לא מייצרים את הרעד בכוח.</strong>הוא מתעורר מעצמו, בקצב של הגוף.</span></li>
+        <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="9" cy="7" r="2.4"/><circle cx="15" cy="17" r="2.4"/></svg></span><span><strong>אתם בשליטה.</strong>לומדים איך להאט, להעמיק או לעצור בכל רגע.</span></li>
+        <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.7L4 19.5l1.2-4.4A7.5 7.5 0 1 1 20 11.5z"/><line x1="4" y1="4" x2="20" y2="20"/></svg></span><span><strong>לא צריך לספר או לנתח.</strong>אין צורך לחזור לחוויות מהעבר. העבודה כולה גופנית.</span></li>
+        <li><span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h5v-5h5v-5h5V5h3"/></svg></span><span><strong>לומדים בהדרגה.</strong>כך שבסוף התהליך תוכלו להמשיך לתרגל בעצמכם, במינון שמתאים לכם.</span></li>
+      </ul>
+      <p class="tre-note reveal">
+        רבים מהמתרגלים מספרים על רוגע, הרפיה ותחושת קלילות אחרי התרגול. החוויה של כל אחד ואחת שונה, וחלק מהלמידה הוא בדיוק להכיר את הדרך שבה הגוף <strong>שלכם</strong> מגיב.
+      </p>
 
       <p class="video-lead reveal">
-        רוצים להבין קצת יותר איך זה עובד?<br>
-        הנה סרטון קצר ומצויר שמסביר בצורה פשוטה ונגישה על TRE ועל מנגנון הרעד הטבעי של הגוף:
+        <strong>רוצים לראות איך זה נראה?</strong><br>
+        סרטון מצויר וקצר של ד״ר דיוויד ברסלי, מפתח השיטה, עם כתוביות בעברית.
       </p>
-      <div class="video-wrap reveal" id="videoWrap">
-        <a class="video-facade" id="videoFacade" href="https://youtube.com/watch?v=ffESIPOUzZM&feature=shared" target="_blank" rel="noopener" aria-label="לצפייה בסרטון קצר שמסביר על TRE ביוטיוב">
-          <img src="https://img.youtube.com/vi/ffESIPOUzZM/hqdefault.jpg" alt="" loading="lazy" aria-hidden="true" />
-          <span class="video-play-btn" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </span>
-        </a>
+      <div class="reveal">
+        <div class="video-wrap" id="videoWrap">
+          <button class="video-facade" id="videoFacade" type="button" aria-label="ניגון הסרטון: מה זה TRE">
+            <img src="https://img.youtube.com/vi/9Flm8v8IKCg/hqdefault.jpg" alt="" loading="lazy" aria-hidden="true" />
+            <span class="video-play-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+        </div>
+        <p class="video-subs idle" id="videoSubs">הכתוביות בעברית יופיעו כאן בזמן הניגון</p>
       </div>
-      <a class="video-fallback-link reveal" href="https://youtube.com/watch?v=ffESIPOUzZM&feature=shared" target="_blank" rel="noopener">▶️ לצפייה בסרטון קצר שמסביר על TRE</a>
+      <p class="video-disclaimer">
+        הסרטון הוא המחשה קצרה של מפתח השיטה. התגובות לתרגול משתנות מאדם לאדם, ו־TRE אינו תחליף לטיפול רפואי או נפשי.
+      </p>
     </div>
   </section>
 
-  <!-- PROCESS -->
+  <!-- WHAT YOU TAKE -->
   <section class="process">
     <div class="container">
-      <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--amber">לומדים דרך הגוף</span></h2>
-      <div class="process-lead reveal">
-        <p>
-          את שיטת TRE לומדים דרך החוויה וההתנסות בגוף.
-        </p>
-        <p>
-          לאורך ארבעת המפגשים נתרגל יחד ונעמיק בהדרגה בהיכרות עם הרעד ועם הדרך הייחודית שבה הגוף של כל אחד ואחת מגיב אליו. נלמד להקשיב למה שקורה בגוף, לווסת את עוצמת התרגול ולזהות מתי נכון להמשיך, להאט או לעצור.
-        </p>
-        <p>
-          המטרה היא שתצאו מהסדנה עם כלי פשוט ונגיש שיכול לעזור לכם לפרוק עומס וסטרס שהצטברו בגוף, להרפות ולחזור שוב ושוב לתחושה של יותר שקט ואיזון — כלי שנשאר איתכם ותוכלו להשתמש בו גם בבית, מתי שתרצו.
-        </p>
-      </div>
+      <h2 class="section-title reveal center"><span class="title-mark--mist">מה תיקחו איתכם מהסדנה?</span></h2>
+      <p class="process-lead reveal">
+        ארבעת המפגשים הם תהליך אחד. בכל מפגש נתרגל יחד, נעמיק עוד קצת, ונבנה בהדרגה את הביטחון לתרגל גם לבד.
+      </p>
       <div class="process-grid">
-        <div class="process-card reveal" style="--rot: -1deg;">
+        <div class="process-card reveal" style="--rot: -0.8deg;">
           <div class="process-num">1</div>
-          <h3>להכיר את הרעד</h3>
-          <p>נחווה את הרעד הטבעי של הגוף ונכיר בהדרגה את הדרך שבה הוא מתעורר ונע בגוף.</p>
+          <h3>דרך חדשה להרפות</h3>
+          <p>כלי גופני להורדת מתח ועומס, שמשתלב עם מה שאתם כבר מכירים, או פותח דלת חדשה לגמרי.</p>
         </div>
-        <div class="process-card reveal" style="--rot: 0.8deg;">
+        <div class="process-card reveal" style="--rot: 0.6deg;">
           <div class="process-num">2</div>
-          <h3>להקשיב לגוף</h3>
-          <p>נלמד לזהות את התחושות והתגובות שעולות בזמן התרגול ולתת לגוף להוביל בקצב שמתאים לו.</p>
+          <h3>היכרות עם הרעד שלכם</h3>
+          <p>תגלו איך הרעד מתעורר אצלכם ואיך הוא נע בגוף. אצל כל אחד ואחת זה נראה קצת אחרת.</p>
         </div>
-        <div class="process-card reveal" style="--rot: -0.6deg;">
+        <div class="process-card reveal" style="--rot: -0.5deg;">
           <div class="process-num">3</div>
-          <h3>לווסת ולבחור</h3>
-          <p>נלמד איך להשפיע על עוצמת הרעד, להעמיק כשמתאים, להאט או לעצור.</p>
+          <h3>הקשבה לגוף</h3>
+          <p>תלמדו לשים לב לתחושות שעולות בזמן התרגול, ולתת לגוף להוביל בקצב שנכון לו.</p>
         </div>
-        <div class="process-card reveal" style="--rot: 1.1deg;">
+        <div class="process-card reveal" style="--rot: 0.9deg;">
           <div class="process-num">4</div>
-          <h3>לקחת את זה לחיים</h3>
-          <p>נרכוש ביטחון בתרגול ונלמד איך להשתמש ב־TRE ככלי פשוט וזמין לפריקת מתח, הרפיה וחזרה לאיזון גם בבית.</p>
+          <h3>ויסות ובחירה</h3>
+          <p>תלמדו להשפיע על עוצמת הרעד: להעמיק כשמתאים, להאט, ולעצור כשרוצים. אתם מחליטים.</p>
+        </div>
+        <div class="process-card reveal" style="--rot: -0.7deg;">
+          <div class="process-num">5</div>
+          <h3>כלי שנשאר איתכם</h3>
+          <p>תצאו עם תרגול שאפשר להמשיך בבית, בהתאם להתאמה האישית שתלמדו בסדנה.</p>
+        </div>
+      </div>
+      <p class="cta-center reveal"><a class="cta-link" href="#form" data-track="CTA_Click_Benefits">מסקרן אותי, אני רוצה להצטרף</a></p>
+    </div>
+  </section>
+
+  <!-- SMALL GROUP -->
+  <section class="group section-alt">
+    <div class="container">
+      <h2 class="section-title reveal center"><span class="title-mark--amber">קבוצה קטנה, יחס אישי</span></h2>
+      <div class="group-wrap reveal">
+        <div class="group-badge">
+          <span class="num"><bdi dir="ltr">10</bdi></span>
+          <span class="label">משתתפים</span>
+        </div>
+        <div class="group-text">
+          <p>הסדנה מתקיימת בקבוצה של עד 10 משתתפים בלבד, כדי שאוכל לראות כל אחד ואחת, ללוות את התרגול מקרוב ולשמור על מרחב אישי, בטוח ונינוח.</p>
+          <p>כל מפגש משלב תרגול, הסבר קצר ומקום לשאלות ולשיתוף, למי שרוצה. אין חובה לדבר.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- AUDIENCE -->
-  <section class="audience section-alt">
+  <section class="audience">
     <div class="container">
-      <div class="reveal" style="text-align: center;">
-        <h2 class="section-title"><span class="title-mark--mist">למי הסדנה מתאימה?</span></h2>
-      </div>
+      <h2 class="section-title reveal center"><span class="title-mark--mist">למי הסדנה מתאימה?</span></h2>
       <ul class="audience-list reveal">
-        <li>למי שמרגיש/ה סטרס, עומס או דריכות וקשה לו באמת להרפות.</li>
-        <li>למי שחי/ה הרבה בעשייה, בשליטה או ב״על אוטומט״ ומרגיש/ה שהגיע הזמן קצת לשחרר.</li>
-        <li>למי שמכיר/ה את התחושה שהראש כבר רוצה לנוח, אבל הגוף פשוט לא מצליח.</li>
-        <li>למי שמחפש/ת דרך גופנית לעבוד עם מה שמצטבר בפנים — בלי צורך לדבר, לנתח או להבין הכול.</li>
-        <li>למי שרוצה להרגיש יותר נינוחות, שקט ומרחב בגוף ובחיים.</li>
-        <li>למי שסקרנ/ית לגלות מה קורה כשנותנים לגוף להוביל ולעשות את מה שהוא יודע באופן טבעי.</li>
-        <li>ולמי שרוצה לרכוש כלי פשוט וזמין, שאפשר לקחת הביתה ולהיעזר בו גם ביומיום.</li>
+        <li>למי שמרגיש/ה סטרס, עומס או דריכות, וקשה לו באמת להרפות.</li>
+        <li>למי שחי/ה הרבה בעשייה, בשליטה או ב״על אוטומט״, ומרגיש/ה שהגיע הזמן קצת לשחרר.</li>
+        <li>למי שמעדיף/ה לעבוד דרך הגוף ולא דרך שיחה.</li>
+        <li>למי שמתרגל/ת יוגה, נשימה או מדיטציה, או עובד/ת עם אנשים, ורוצה להכיר כלי גופני חדש ומסקרן.</li>
+        <li>למי שסקרנ/ית לגלות מה קורה כשנותנים לגוף להוביל.</li>
       </ul>
-      <p class="audience-note reveal">אין צורך בניסיון קודם, בגמישות או בכושר גופני מיוחד.</p>
-    </div>
-  </section>
-
-  <!-- SMALL GROUP -->
-  <section class="group">
-    <div class="container">
-      <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--amber">קבוצה קטנה</span></h2>
-      <div class="group-wrap reveal">
-        <div class="group-badge">
-          <span class="num"><bdi dir="ltr">10</bdi></span>
-          <span class="label">משתתפים</span>
-        </div>
-        <p class="group-text">
-          הסדנה מתקיימת בקבוצה אינטימית של עד 10 משתתפים בלבד, כדי שאוכל לראות כל אחד ואחת, ללוות את התרגול ולאפשר מרחב אישי ובטוח ללמידה.
-        </p>
+      <div class="good-to-know reveal">
+        <h3>טוב לדעת</h3>
+        <ul>
+          <li><strong>לא צריך לעבור טראומה כדי ללמוד TRE.</strong> השיטה מתאימה גם למי שפשוט רוצה להתמודד טוב יותר עם מתח יומיומי.</li>
+          <li><strong>אין צורך בניסיון קודם</strong>, בגמישות או בכושר גופני מיוחד.</li>
+        </ul>
+        <p class="fine">במצבים רפואיים או נפשיים מסוימים חשוב לבדוק התאמה לפני ההרשמה. <a href="#faq">פרטים בשאלות הנפוצות</a>.</p>
       </div>
     </div>
   </section>
 
-  <!-- SPECS -->
-  <section class="specs section-alt">
+  <!-- TESTIMONIALS -->
+  <section class="testimonials section-alt">
     <div class="container">
-      <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--mist">מתי ואיפה?</span></h2>
+      <h2 class="section-title reveal center"><span class="title-mark--amber">מילים של משתתפים</span></h2>
+      <p class="testimonials-lead reveal">
+        מילים ששיתפו משתתפים בסדנה קודמת שלי, ״הוויה מתגלה״, שבה שילבנו את תרגול ה־TRE לצד כלים נוספים.
+      </p>
+      <figure class="quote-featured reveal">
+        <blockquote>דרך ה־TRE למדתי להקשיב לגוף שלי ולסמוך עליו, וזה משהו שלא הכרתי קודם.</blockquote>
+        <figcaption class="quote-attr">משתתפת, סדנת ״הוויה מתגלה״</figcaption>
+      </figure>
+      <div class="quotes-grid">
+        <figure class="quote-card reveal">
+          <blockquote>הרגשתי שפשוט יצרת מקום שאפשר להיות בו. בלי מסכות, בלי להוכיח כלום, פשוט להיות.</blockquote>
+          <figcaption class="quote-attr">משתתפת, סדנת ״הוויה מתגלה״</figcaption>
+        </figure>
+        <figure class="quote-card reveal">
+          <blockquote>שליטה מלאה בחומר, נוכחות בכל שלב, רגישות גבוהה לבני אדם ולמה שהם עוברים וחווים.</blockquote>
+          <figcaption class="quote-attr">משתתף, סדנת ״הוויה מתגלה״</figcaption>
+        </figure>
+        <figure class="quote-card reveal">
+          <blockquote>שמחה מאד שנתתי לעצמי את המתנה הזאת וממליצה בחום.</blockquote>
+          <figcaption class="quote-attr">משתתפת, סדנת ״הוויה מתגלה״</figcaption>
+        </figure>
+      </div>
+      <p class="quotes-more reveal"><a href="https://studiolinshom.github.io/derech-le-ahava/testimonials.html" target="_blank" rel="noopener">לקריאת המכתבים המלאים</a></p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="instructor">
+    <div class="container">
+      <h2 class="section-title reveal center"><span class="title-mark--mist">קצת עליי</span></h2>
+      <div class="instructor-wrap reveal" style="margin-top: 8px;">
+        <div class="instructor-avatar">
+          <img src="pedit.jpg" alt="פדית ציבייר" />
+        </div>
+        <div class="instructor-bio">
+          <div class="instructor-name">פדית ציבייר</div>
+          <p class="instructor-role">מנחה מוסמכת בשיטת <bdi dir="ltr">TRE (TRE Provider)</bdi> · פסיכותרפיה, פוקוסינג, נשימה ויוגה</p>
+          <p>
+            אני מגיעה מעולמות הפסיכותרפיה, הפוקוסינג, הנשימה והיוגה, וכבר שנים מלווה אנשים בתהליכי גוף־נפש, בין השאר בהתמודדות עם פוסט־טראומה, חרדה ודיכאון.
+          </p>
+          <p>
+            תמיד ריתק אותי המפגש בין הגוף, הנפש והתודעה, ובעיקר האפשרות לא רק להבין דברים בראש, אלא לאפשר לשינוי לקרות גם דרך הגוף.
+          </p>
+          <p>
+            <strong>ואז פגשתי את ה־TRE.</strong> אחרי כל השנים שבהן עבדתי עם הגוף, הוא עדיין הצליח להפתיע אותי. ריתק אותי כמה ישיר ופשוט אפשר לפגוש את היכולת של הגוף לפרוק מתח ולהרפות. ידעתי שזה כלי שאני רוצה להמשיך לחקור, להעמיק בו וללמד.
+          </p>
+          <p>
+            היום אני מתרגלת בעצמי, מוסמכת כ־<bdi dir="ltr">TRE Provider</bdi>, ומלמדת ומלווה אנשים בתרגול. בסדנה חשוב לי שתלמדו לא רק את התרגילים, אלא גם להקשיב לגוף שלכם בתוכם, ושתצאו עם מספיק ביטחון כדי להמשיך לתרגל בעצמכם.
+          </p>
+          <a class="instructor-more" href="https://studiolinshom.github.io/Padit/" target="_blank" rel="noopener">לכרטיס הביקור ולפירוט ההכשרות שלי</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="details section-alt">
+    <div class="container">
+      <h2 class="section-title reveal center"><span class="title-mark--amber">פרטי הסדנה</span></h2>
       <div class="date-medallions reveal">
         <div class="medallion"><bdi dir="ltr">3.11</bdi></div>
         <div class="medallion"><bdi dir="ltr">10.11</bdi></div>
@@ -893,73 +1107,65 @@
       </div>
       <div class="specs-card reveal">
         <dl>
-          <div class="spec-row">
-            <dt>תאריכים</dt>
-            <dd>4 ימי שלישי בנובמבר 2026 — <bdi dir="ltr">3.11 | 10.11 | 17.11 | 24.11</bdi></dd>
-          </div>
-          <div class="spec-row">
-            <dt>שעות</dt>
-            <dd><bdi dir="ltr">19:00–20:30</bdi></dd>
-          </div>
-          <div class="spec-row">
-            <dt>מיקום</dt>
-            <dd>📍 סטודיו בסביון</dd>
-          </div>
+          <div class="spec-row"><dt>מתי</dt><dd>ארבעה ימי שלישי בנובמבר 2026</dd></div>
+          <div class="spec-row"><dt>שעות</dt><dd><bdi dir="ltr">19:00–20:30</bdi></dd></div>
+          <div class="spec-row"><dt>איפה</dt><dd>סטודיו בסביון</dd></div>
+          <div class="spec-row"><dt>קבוצה</dt><dd>עד 10 משתתפים</dd></div>
         </dl>
       </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="pricing">
-    <div class="container">
-      <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--amber">השקעה</span></h2>
       <div class="price-badges reveal">
-        <div class="price-badge-circle price-badge-circle--main">
+        <div class="price-badge-circle price-badge-circle--main" data-early-only>
           <span class="price-ribbon">הרשמה מוקדמת</span>
-          <div class="price-label">עד <bdi dir="ltr">15.10</bdi></div>
+          <div class="price-label">עד <bdi dir="ltr">15.10.2026</bdi></div>
           <div class="price-amount"><span class="currency">₪</span>590</div>
         </div>
-        <div class="price-badge-circle price-badge-circle--secondary">
+        <div class="price-badge-circle price-badge-circle--secondary" data-early-only>
           <div class="price-label">לאחר מכן</div>
           <div class="price-amount"><span class="currency">₪</span>680</div>
         </div>
+        <div class="price-badge-circle price-badge-circle--main" data-after-early hidden>
+          <div class="price-label">ארבעה מפגשים</div>
+          <div class="price-amount"><span class="currency">₪</span>680</div>
+        </div>
       </div>
-      <p class="pricing-note reveal">
-        ההרשמה היא לארבעת המפגשים כתהליך אחד, ומספר המקומות מוגבל ל־10 משתתפים.
-      </p>
+      <p class="pricing-note reveal">ההרשמה היא לארבעת המפגשים כתהליך אחד.</p>
+      <p class="cta-center reveal"><a class="cta-btn" href="#form" data-track="CTA_Click_Details">שומרים לי מקום בסדנה</a></p>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="instructor section-alt">
+  <!-- FAQ -->
+  <section class="faq" id="faq">
     <div class="container">
-      <h2 class="section-title reveal" style="text-align: center;"><span class="title-mark--mist">קצת עליי</span></h2>
-      <div class="instructor-wrap reveal" style="margin-top: 8px;">
-        <div class="instructor-avatar">
-          <img src="pedit.jpg" alt="פדית ציבייר" />
-        </div>
-        <div class="instructor-bio">
-          <div class="instructor-name">פדית ציבייר</div>
-          <p>
-            אני מגיעה מעולמות הפסיכותרפיה, הפוקוסינג, הנשימה והיוגה, וכבר שנים מלווה אנשים בתהליכים של גוף־נפש ועובדת עם מגוון רחב של כלים ושיטות.
-          </p>
-          <p>
-            במהלך השנים עבדתי וליוויתי אנשים רבים, בין השאר בהתמודדות עם פוסט־טראומה, חרדה ודיכאון. תמיד ריתק אותי המפגש שבין הגוף, הנפש והתודעה — ובעיקר איך אפשר לא רק להבין דברים דרך הראש, אלא לאפשר לשינוי ולשחרור לקרות גם דרך הגוף.
-          </p>
-          <p>ואז גיליתי את ה־TRE.</p>
-          <p>
-            למרות כל השנים שבהן למדתי ועבדתי עם הגוף, המפגש עם TRE הביא איתו משהו חדש עבורי. התרגול הזה ריתק אותי מהרגע הראשון, ובעיקר היכולת לפגוש באופן כל כך ישיר את המנגנון הטבעי של הגוף לפרוק מתח, להרפות ולחזור בהדרגה לאיזון. הרגשתי שמצאתי כלי שאני רוצה להמשיך לחקור בעצמי, להעמיק בו ולהעביר אותו הלאה.
-          </p>
-          <p>
-            מאז הפך ה־TRE לחלק משמעותי מאוד בדרך האישית והמקצועית שלי. אני מתרגלת בעצמי, מוסמכת כ־<strong>TRE Provider</strong> ומלמדת ומלווה אנשים בתרגול.
-          </p>
-          <p>
-            בסדנה חשוב לי לא רק שתכירו את הרעד ותלמדו את התרגילים, אלא שתלמדו להקשיב לגוף שלכם בתוך התרגול — לזהות מתי מתאים להעמיק, מתי להאט ומתי לעצור, ובהדרגה להרגיש מספיק בטוחים כדי לקחת את הכלי הזה איתכם ולהמשיך לתרגל גם בעצמכם.
-          </p>
-          <p>למי שרוצה להכיר אותי קצת יותר ולקרוא על הדרך המקצועית שלי ועל ההכשרות שעברתי, אפשר להיכנס לכרטיס הביקור שלי כאן:</p>
-          <a class="instructor-more" href="https://studiolinshom.github.io/Padit/" target="_blank" rel="noopener">להיכרות נוספת ולפירוט ההכשרות שלי</a>
-        </div>
+      <h2 class="section-title reveal center"><span class="title-mark--mist">שאלות נפוצות</span></h2>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>צריך ניסיון קודם?</summary>
+          <div class="faq-answer"><p>לא. לא צריך ניסיון בעבודת גוף, ביוגה או במדיטציה, וגם לא גמישות או כושר מיוחד. התרגילים פשוטים, ואלמד אותם צעד אחר צעד.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>הרעד באמת קורה מעצמו?</summary>
+          <div class="faq-answer"><p>כן. התרגילים מזמינים את הרעד, אבל לא מייצרים אותו בכוח. אצל אנשים רבים הוא מתעורר באופן בלתי רצוני, ולא פעם זה מפתיע בהתחלה. אצל כל אחד ואחת הוא נראה אחרת.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>ומה אם הגוף שלי לא רועד?</summary>
+          <div class="faq-answer"><p>זה קורה, וזה בסדר גמור. אצל חלק מהאנשים הרעד מתעורר כבר בפעם הראשונה, ואצל אחרים לוקח לו זמן. אין כאן מבחן, ואין ״הצלחה״ או ״כישלון״. נתרגל בסבלנות ונמצא יחד את הדרך שמתאימה לגוף שלכם.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>אפשר לעצור את הרעד?</summary>
+          <div class="faq-answer"><p>כן, בכל רגע. חלק מרכזי בלמידה הוא בדיוק זה: איך להאט, איך להפחית את העוצמה ואיך לעצור. אתם בשליטה לאורך כל התרגול.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>האם TRE מתאים גם למי שלא עבר טראומה?</summary>
+          <div class="faq-answer"><p>בהחלט. למרות השם, לא צריך לעבור טראומה כדי ללמוד TRE. רבים מגיעים פשוט כדי להתמודד טוב יותר עם מתח ועומס, להרפות, או מתוך סקרנות להכיר כלי חדש.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>אוכל להמשיך לתרגל לבד בבית?</summary>
+          <div class="faq-answer"><p>זו אחת המטרות של הסדנה. לאורך המפגשים נבנה בהדרגה את ההבנה ואת הביטחון שתצטרכו, ונדבר על מינון ותדירות שמתאימים לכם, כדי שתוכלו להמשיך לתרגל באופן עצמאי.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>יש מצבים שבהם התרגול לא מתאים?</summary>
+          <div class="faq-answer"><p>כן. TRE אינו טיפול רפואי או נפשי ואינו תחליף לו. במצבים מסוימים, כמו הריון, ניתוח או פציעה טרייה, מצב רפואי מורכב (למשל מחלת לב או אפילפסיה) או מצב נפשי רגיש, חשוב לבדוק התאמה לפני ההרשמה. אם יש לכם ספק, כתבו לי ונבדוק יחד.</p></div>
+        </details>
       </div>
     </div>
   </section>
@@ -983,8 +1189,8 @@
   <section class="form-section" id="form">
     <div class="container">
       <form class="form-card reveal" id="signupForm" novalidate>
-        <h2>אני רוצה להצטרף</h2>
-        <p class="form-lead">4 ימי שלישי בנובמבר 2026</p>
+        <h2>שומרים לי מקום</h2>
+        <p class="form-lead">ארבעה ימי שלישי בנובמבר 2026 · עד 10 משתתפים</p>
 
         <div class="field" id="field-name">
           <label for="fullName">שם מלא</label>
@@ -1053,7 +1259,7 @@
 
   <!-- STICKY CTA -->
   <div class="sticky-cta" id="stickyCta">
-    <a href="#form">להרשמה לסדנה</a>
+    <a href="#form">שומרים לי מקום בסדנה</a>
   </div>
 
   <div class="scroll-arrow" aria-hidden="true">
@@ -1075,8 +1281,9 @@
     const formSection = document.querySelector('.form-section');
     let heroVisible = true, formVisible = false;
     function updateSticky() {
-      if (!heroVisible && !formVisible) sticky.classList.add('visible');
-      else sticky.classList.remove('visible');
+      const show = !heroVisible && !formVisible;
+      sticky.classList.toggle('visible', show);
+      document.body.classList.toggle('sticky-on', show);
     }
     new IntersectionObserver((entries) => {
       for (const e of entries) { heroVisible = e.isIntersecting; }
@@ -1206,11 +1413,102 @@
     // First time a form field gets focus
     form.addEventListener('focusin', () => trackOnce('Form_Started'), { once: true });
 
-    // Video facade — opens the YouTube video in a new tab (embedding is disabled by the uploader)
+    // ============ VIDEO: in-page player + Hebrew subtitles ============
+    // Dr. David Berceli's animated explainer has no narration, only English text drawn
+    // on screen, so the Hebrew cues below translate that text: [start, end, text] in seconds.
+    const VIDEO_ID = '9Flm8v8IKCg';
+    const SUBS = [
+      [3.5, 8.3, 'תרגילים לשחרור מתח וטראומה'],
+      [11.5, 16.8, 'TRE® — שחרור דפוסים שריריים עמוקים של סטרס, מתח וטראומה'],
+      [16.8, 20.8, 'TRE® מפעיל מנגנון רפלקס טבעי'],
+      [20.8, 26.8, 'שמשחרר מתח שרירי, ובעקבות זאת מרגיע את מערכת העצבים'],
+      [28.5, 47.5, 'מצב של איזון'],
+      [52, 56, 'TRE® — הקלה בסטרס ובמתח'],
+      [56, 59.8, 'שיווי משקל'],
+      [68, 77.8, 'מנגנון טבעי'],
+      [88, 94.8, 'מצב של עייפות — לא של תשישות'],
+      [101, 108.8, 'בערך 20 הדקות הבאות'],
+      [109.5, 118.8, 'טראומה ✗ · מתח ✗'],
+      [133, 140.8, 'פוסט־טראומה (PTSD) ✗'],
+      [141, 148.8, 'סטרס'],
+      [149.5, 160.5, 'TRE® — הקלה בסטרס ובמתח'],
+      [160.5, 170, '© Mental Joe. כל הזכויות שמורות.'],
+    ];
     const videoFacade = document.getElementById('videoFacade');
-    if (videoFacade) {
-      videoFacade.addEventListener('click', () => trackOnce('Video_Play_Click'));
+    const videoSubs = document.getElementById('videoSubs');
+    let ytPlayer = null, subTimer = null;
+
+    function showSub(t) {
+      const cue = SUBS.find(c => t >= c[0] && t < c[1]);
+      const text = cue ? cue[2] : '';
+      if (videoSubs.textContent !== text) videoSubs.textContent = text;
     }
+    function loadYouTubeApi() {
+      return new Promise((resolve, reject) => {
+        if (window.YT && window.YT.Player) return resolve();
+        window.onYouTubeIframeAPIReady = resolve;
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        tag.onerror = reject;
+        document.head.appendChild(tag);
+      });
+    }
+    function openOnYouTube() {
+      window.open('https://www.youtube.com/watch?v=' + VIDEO_ID, '_blank', 'noopener');
+    }
+
+    if (videoFacade) {
+      videoFacade.addEventListener('click', async () => {
+        trackOnce('Video_Play_Click');
+        videoFacade.classList.add('loading');
+        try {
+          await loadYouTubeApi();
+        } catch (e) {
+          videoFacade.classList.remove('loading');
+          openOnYouTube();
+          return;
+        }
+        const holder = document.createElement('div');
+        holder.id = 'ytPlayer';
+        videoFacade.replaceWith(holder);
+        videoSubs.classList.remove('idle');
+        videoSubs.textContent = '';
+        ytPlayer = new YT.Player('ytPlayer', {
+          videoId: VIDEO_ID,
+          host: 'https://www.youtube-nocookie.com',
+          playerVars: { autoplay: 1, rel: 0, playsinline: 1, cc_load_policy: 0, iv_load_policy: 3 },
+          events: {
+            onReady: (e) => e.target.playVideo(),
+            onStateChange: (e) => {
+              clearInterval(subTimer);
+              if (e.data === YT.PlayerState.PLAYING) {
+                subTimer = setInterval(() => showSub(ytPlayer.getCurrentTime()), 200);
+              } else if (e.data === YT.PlayerState.ENDED) {
+                videoSubs.textContent = '';
+              } else {
+                showSub(ytPlayer.getCurrentTime());
+              }
+            },
+            onError: (e) => { if (e.data === 101 || e.data === 150) openOnYouTube(); },
+          },
+        });
+      });
+    }
+
+    // ============ EARLY-BIRD PRICE ============
+    // The 590 ₪ early-bird price is valid until 15.10.2026 (Israel time); from 16.10 only 680 ₪ shows.
+    const EARLY_BIRD_END = Date.parse('2026-10-16T00:00:00+03:00');
+    function applyPricing(now) {
+      const early = now < EARLY_BIRD_END;
+      document.querySelectorAll('[data-early-only]').forEach(el => { el.hidden = !early; });
+      document.querySelectorAll('[data-after-early]').forEach(el => { el.hidden = early; });
+    }
+    applyPricing(Date.now());
+
+    // CTA button tracking
+    document.querySelectorAll('[data-track]').forEach(el => {
+      el.addEventListener('click', () => trackOnce(el.dataset.track));
+    });
 
     // Scroll arrow
     const scrollArrow = document.querySelector('.scroll-arrow');
