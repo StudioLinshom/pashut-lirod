@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="facebook-domain-verification" content="695vr6h2rzzmnzwca4fivqnj1er8yc" />
+  <meta name="description" content="מכתבים מלאים של משתתפים בסדנת ״הוויה מתגלה״ של פדית ציבייר, שבה שולב תרגול TRE." />
+  <meta property="og:title" content="מה מספרים משתתפים — פשוט לרעוד" />
+  <meta property="og:description" content="מכתבים מלאים של משתתפים בסדנת ״הוויה מתגלה״ של פדית ציבייר, שבה שולב תרגול TRE." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://studiolinshom.github.io/pashut-lirod/og-image.png" />
+  <title>מה מספרים משתתפים — פשוט לרעוד</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '27499768226285774');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=27499768226285774&ev=PageView&noscript=1"
+    alt="" /></noscript>
+  <!-- End Meta Pixel Code -->
+  <style>
+    :root {
+      --bg: #F4F7F8;
+      --bg-card: #FFFFFF;
+      --bg-warm: #FAF7F1;
+      --ink: #2F3E46;
+      --ink-soft: #5A6B72;
+      --ink-mute: #8A999F;
+      --mist: #A8C4CE;
+      --mist-deep: #7BA3B2;
+      --cream: #F3E9D8;
+      --amber: #D99A5B;
+      --amber-deep: #BE8049;
+      --line: rgba(47, 62, 70, 0.12);
+      --line-strong: rgba(47, 62, 70, 0.22);
+      --radius: 18px;
+      --radius-lg: 28px;
+      --shadow-sm: 0 2px 8px rgba(47, 62, 70, 0.07);
+      --shadow-md: 0 6px 20px rgba(47, 62, 70, 0.09);
+      --shadow-lg: 0 14px 40px rgba(47, 62, 70, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Heebo', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.75;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1 { font-family: 'Frank Ruhl Libre', serif; font-weight: 900; letter-spacing: -0.01em; line-height: 1.15; margin: 0 0 18px; }
+    p { margin: 0 0 1em; }
+    a { color: var(--amber-deep); text-decoration: none; }
+    .container { max-width: 760px; margin-inline: auto; padding-inline: 24px; }
+
+    /* Header */
+    .page-header {
+      position: relative; overflow: hidden;
+      padding: 84px 0 64px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg) 100%);
+    }
+    .blob-a, .blob-b { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(2px); }
+    .blob-a { width: 300px; height: 300px; background: var(--mist); opacity: 0.5; top: -130px; inset-inline-end: -100px; }
+    .blob-b { width: 200px; height: 200px; background: var(--cream); opacity: 0.8; bottom: -100px; inset-inline-start: -80px; }
+    .page-header .container { position: relative; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 13px; letter-spacing: 0.08em; font-weight: 700;
+      color: var(--amber-deep);
+      padding: 6px 16px; margin-bottom: 20px;
+      border: 1.5px solid var(--line-strong); border-radius: 100px;
+      background: var(--bg-card);
+    }
+    .page-header h1 { font-size: clamp(36px, 6vw, 56px); }
+    .header-lead { max-width: 560px; margin: 0 auto 6px; color: var(--ink-soft); font-size: clamp(16.5px, 2vw, 19px); }
+    .header-sublead { font-family: 'Frank Ruhl Libre', serif; font-weight: 700; font-size: 20px; color: var(--amber-deep); margin: 0; }
+
+    /* Back link at the top */
+    .back-top {
+      position: absolute; top: 20px; inset-inline-start: 20px; z-index: 2;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 16px;
+      background: var(--bg-card); color: var(--ink);
+      border: 1px solid var(--line-strong); border-radius: 100px;
+      font-size: 14px; font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+    .back-top::before { content: '→'; }
+
+    /* Letters */
+    .letters { padding: 48px 0 72px; }
+    .letter {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 42px 38px 30px;
+      margin: 0 auto 30px;
+    }
+    @media (max-width: 600px) { .letter { padding: 36px 24px 24px; } }
+    .letter::before {
+      content: '\201D';
+      position: absolute; top: -8px; inset-inline-start: 22px;
+      font-family: 'Frank Ruhl Libre', serif; font-size: 76px; line-height: 1;
+      color: var(--mist-deep); opacity: 0.55;
+      pointer-events: none;
+    }
+    .letter p {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 18px; line-height: 1.85; font-weight: 500;
+      color: var(--ink);
+    }
+    .letter p:last-of-type { margin-bottom: 0; }
+    .letter-attr { margin-top: 16px; font-size: 13.5px; color: var(--ink-mute); }
+
+    /* Back CTA */
+    .back-cta { text-align: center; margin-top: 44px; }
+    .back-cta a {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 34px;
+      background: var(--amber); color: #fff;
+      border-radius: 100px;
+      font-size: 16.5px; font-weight: 700;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.15s, background 0.15s;
+    }
+    .back-cta a:hover { transform: translateY(-2px); background: var(--amber-deep); }
+    .back-cta a::before { content: '→'; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="blob-a" aria-hidden="true"></div>
+    <div class="blob-b" aria-hidden="true"></div>
+    <a class="back-top js-back" href="index.html#testimonials">חזרה לפשוט לרעוד</a>
+    <div class="container">
+      <span class="eyebrow">פשוט לרעוד · סדנת <bdi dir="ltr">TRE</bdi></span>
+      <h1>מה מספרים משתתפים</h1>
+      <p class="header-lead">מוזמנות ומוזמנים להכיר חוויות של משתתפים מתוך הסדנא האחרונה —</p>
+      <p class="header-sublead">סדנת ״הוויה מתגלה״</p>
+    </div>
+  </header>
+
+  <main class="letters">
+    <div class="container">
+
+      <article class="letter reveal">
+        <p>פדית מביאה איתה לסדנא איכויות של חום אנושי, אהבה אמיתית לאנשים ולטיפול בהם ושפע של טכניקות עוצמתיות מעולמות הגוף-נפש-תודעה: מיינדפולנס, ״העבודה״ של ביירון קייטי, TRE, נשימה מעגלית ועוד.</p>
+        <p>השילוב של האישיות שלה, הכוונה שהיא באה איתה לתת מעומק הלב והטכניקות המגוונות והעמוקות סייעו לי לעשות עבודה משמעותית מאד עבורי שלא ציפיתי שתתרחש ב-4 מפגשים. להבין, להיטען, להתעמק ולצאת עם צידה לדרך.</p>
+        <p>שמחה מאד שנתתי לעצמי את המתנה הזאת וממליצה בחום.</p>
+        <div class="letter-attr">משתתפת, סדנת ״הוויה מתגלה״</div>
+      </article>
+
+      <article class="letter reveal">
+        <p>פדית אהובה,</p>
+        <p>אני כבר מתגעגעת… מי היה מאמין שארבעה מפגשים יכולים להיות כל כך משמעותיים.</p>
+        <p>רציתי להגיד לך תודה מעומק הלב שלי. אני מרגישה שהסדנה הזאת באמת הייתה בשבילי משנה חיים. סוף סוף למדתי לנשום, כמה חיכיתי לרגע הזה. דרך ה־TRE למדתי להקשיב לגוף שלי ולסמוך עליו, וזה משהו שלא הכרתי קודם.</p>
+        <p>מעבר לכל הידע והכלים, הרגשתי שפשוט יצרת מקום שאפשר להיות בו. בלי מסכות, בלי להוכיח כלום, פשוט להיות. בשבילי זה היה כל כך משמעותי.</p>
+        <p>פגשתי אנשים מדהימים, כל אחד הביא את עצמו, והלב פשוט נפתח.</p>
+        <p>ואיך אפשר לא להתגעגע גם לכל המסביב… לאווירה, לשקט, לקלפים וללבנה, למלון, לג'ינג'ר, שהיו טעימים כל כך, פשוט מושלם ובעיקר לתחושה הזאת שכל יום ראשון אני מגיעה למקום שעושה לי טוב.</p>
+        <p>תודה על הלב שלך, על הדרך שלך, על הנוכחות שלך ועל כל מה שנתת לנו. אני באמת מרגישה שזכיתי להכיר אותך ולעבור את המסע הזה איתך.</p>
+        <p>כבר מחכה לפעם הבאה.</p>
+        <div class="letter-attr">משתתפת, סדנת ״הוויה מתגלה״</div>
+      </article>
+
+      <article class="letter reveal">
+        <p>עברתי חוויה עצומה. חוויה פנימית שאני מרגיש אותה עד היום. קשה לתאר במילים. יצאתי במפגש הרביעי והאחרון של הסדנא כשאני אוהב את עצמי.</p>
+        <p>התחלתי את הסדנא בתחושה שאני לא ראוי, לא שווה ועברתי תהליך עמוק, חוויה עמוקה, שורשית, שמשפיעה עלי עד היום.</p>
+        <p>כמה מילים על פדית: אני מכיר את פדית זמן רב. שמחתי לראות לאיזו רמה מקצועית גבוהה היא הגיעה. שליטה מלאה בחומר, נוכחות בכל שלב, רגישות גבוהה לבני אדם ולמה שהם עוברים וחווים.</p>
+        <p>הסדנא הזאת היא תהליך חשוב לכל מי שרוצה לגעת בפנימיות שלו, להבין את עצמו, לחוות תהליך מרפא ומרגש.</p>
+        <div class="letter-attr">משתתף, סדנת ״הוויה מתגלה״</div>
+      </article>
+
+      <div class="back-cta reveal">
+        <a class="js-back" href="index.html#testimonials">חזרה לדף ״פשוט לרעוד״</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Fade-in on scroll
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Back: return to the exact spot on the landing page if we came from it,
+    // otherwise open the landing page at the testimonials section.
+    const folder = (path) => path.slice(0, path.lastIndexOf('/') + 1);
+    let cameFromLanding = false;
+    try {
+      const ref = new URL(document.referrer);
+      cameFromLanding = ref.origin === location.origin && folder(ref.pathname) === folder(location.pathname)
+        && !/testimonials/.test(ref.pathname);
+    } catch (e) { /* no referrer */ }
+    document.querySelectorAll('.js-back').forEach(a => {
+      a.addEventListener('click', (ev) => {
+        if (cameFromLanding && history.length > 1) { ev.preventDefault(); history.back(); }
+      });
+    });
+  </script>
+</body>
+</html>
