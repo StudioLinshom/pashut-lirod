@@ -305,11 +305,11 @@
     }
     .video-lead strong { color: var(--ink); }
     .video-wrap {
-      max-width: 680px; margin: 0 auto;
-      border-radius: var(--radius-lg);
+      max-width: 760px; margin: 0 auto;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
       overflow: hidden;
       border: 1px solid var(--line);
-      box-shadow: var(--shadow-lg);
+      border-bottom: none;
       aspect-ratio: 16 / 9;
       position: relative;
       background: #fff;
@@ -334,6 +334,19 @@
     .video-facade:hover .video-play-btn { transform: translate(-50%, -50%) scale(1.06); }
     .video-play-btn svg { width: 28px; height: 28px; fill: #fff; margin-inline-start: 4px; }
     .video-facade.loading .video-play-btn { opacity: 0.6; }
+    .video-subs {
+      max-width: 760px; margin: 0 auto;
+      min-height: 66px;
+      padding: 12px 18px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background: var(--ink); color: #fff;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      font-size: clamp(16px, 2.4vw, 21px); font-weight: 500; line-height: 1.4;
+      box-shadow: var(--shadow-lg);
+    }
+    .video-subs.idle { color: rgba(255, 255, 255, 0.6); font-size: 14.5px; font-weight: 400; }
+    @media (max-width: 370px) { .video-subs { font-size: 15px; padding-inline: 14px; } }
     .video-disclaimer {
       max-width: 620px; margin: 14px auto 0; text-align: center;
       color: var(--ink-mute); font-size: 13.5px; line-height: 1.65;
@@ -928,7 +941,7 @@
 
       <p class="video-lead reveal">
         <strong>רוצים לראות איך זה נראה?</strong><br>
-        סרטון מצויר של כחמש דקות שמציג את השיטה, עם תרגום אוטומטי לעברית של יוטיוב.
+        סרטון מצויר של כחמש דקות שמציג את השיטה, עם כתוביות בעברית.
       </p>
       <div class="reveal">
         <div class="video-wrap" id="videoWrap">
@@ -939,9 +952,10 @@
             </span>
           </button>
         </div>
+        <p class="video-subs idle" id="videoSubs">הכתוביות בעברית יופיעו כאן בזמן הניגון</p>
       </div>
       <p class="video-disclaimer">
-        הכתוביות בעברית מתורגמות אוטומטית על ידי יוטיוב, ולכן ייתכנו בהן אי־דיוקים. התגובות לתרגול משתנות מאדם לאדם, ו־TRE אינו תחליף לטיפול רפואי או נפשי.
+        הכתוביות הן תרגום של הקריינות באנגלית. הסרטון הוא הקדמה כללית לשיטה; התגובות לתרגול משתנות מאדם לאדם, ו־TRE אינו תחליף לטיפול רפואי או נפשי.
       </p>
     </div>
   </section>
@@ -1399,22 +1413,139 @@
     // First time a form field gets focus
     form.addEventListener('focusin', () => trackOnce('Form_Started'), { once: true });
 
-    // ============ VIDEO: in-page player with YouTube's auto-translated Hebrew captions ============
-    // Animated 5-minute introduction to TRE (TRE for Africa Foundation). The video has English
-    // auto-captions; we ask the player to show them auto-translated into Hebrew.
+    // ============ VIDEO: in-page player + Hebrew subtitles ============
+    // Animated 5-minute introduction to TRE (TRE for Africa Foundation). The Hebrew cues below
+    // translate the English narration; each starts at the given second and runs until the next.
     const VIDEO_ID = '1PT1crBhhUE';
+    const SUBS = [
+      [5.8, 'הכירו את בוב, איש המערות.'],
+      [8.3, 'בימים ההם, כשנתקל בדינוזאור,'],
+      [10.3, 'ליבו פעם מהר יותר ולחץ הדם עלה,'],
+      [12.4, 'השרירים נמתחו והאישונים התרחבו,'],
+      [15.1, 'וקורטיזול ואדרנלין השתחררו בגופו —'],
+      [17.4, 'כל זה כדי להכין את הגוף לברוח'],
+      [19.9, 'או להילחם על חייו.'],
+      [22.0, 'בין אם ברח מהדינוזאור ונמלט,'],
+      [24.4, 'ובין אם תקף אותו והביס אותו,'],
+      [28.3, 'כימיקלי הסטרס בגופו התפרקו'],
+      [30.3, 'והוא המשיך ביומו כרגיל.'],
+      [34.4, 'הכירו את ברה, האיילה.'],
+      [37.3, 'כשהיא נתקלת באריה, גופה נכנס'],
+      [39.4, 'למצב ״הילחם או ברח״,'],
+      [42.0, 'עם אותם שינויים גופניים וכימיים'],
+      [43.6, 'שחווה בוב איש המערות.'],
+      [47.0, 'אבל יש מצבים שבהם להילחם או לברוח'],
+      [49.1, 'אינם אפשרות עבור ברה.'],
+      [51.6, 'בריחה שתמשוך אליה תשומת לב'],
+      [53.2, 'תהיה מסוכנת יותר, וניסיון לתקוף'],
+      [55.7, 'מסוכן אפילו עוד יותר —'],
+      [57.9, 'אין לה שיניים חדות. במקרים כאלה,'],
+      [60.9, 'מערכת העצבים שלה נכנסת'],
+      [62.6, 'למצב קיפאון, כדי לשמור עליה.'],
+      [65.6, 'מאחר שלא השתמשה בכימיקלים'],
+      [67.4, 'כדי לברוח או להילחם, הם נשארים בגופה.'],
+      [70.7, 'אבל כחיית בר, יש לה יכולת טבעית'],
+      [72.8, 'לשחרר את הכימיקלים האלה.'],
+      [75.5, 'כשהטורף מתרחק, גופה מתחיל'],
+      [77.3, 'לרעוד, לרטוט ולהזדעזע.'],
+      [80.2, 'כך משתחררים הכימיקלים שנאגרו'],
+      [82.0, 'ומתח השרירים,'],
+      [84.0, 'והיא ממשיכה ביומה כרגיל.'],
+      [86.8, 'אבל הכירו את שלדון.'],
+      [90.1, 'הוא מתמודד עם לחצים של ימינו:'],
+      [91.6, 'דדליינים בלתי אפשריים,'],
+      [93.5, 'עמיתים קשים לעבודה,'],
+      [95.4, 'ודאגות לנישואים ולילדים.'],
+      [97.7, 'הוא חושש לאבד אהבה, מעמד,'],
+      [100.4, 'יוקרה ושייכות.'],
+      [102.5, 'אלה הדינוזאורים של שלדון,'],
+      [104.7, 'וגופו מגיב אליהם בדיוק כאילו'],
+      [106.7, 'היו איומים פיזיים: הלב פועם מהר,'],
+      [109.3, 'לחץ הדם עולה, השרירים נמתחים,'],
+      [112.2, 'האישונים מתרחבים והורמוני סטרס'],
+      [114.4, 'משתחררים בגופו.'],
+      [116.0, 'מהדינוזאורים של שלדון קשה לברוח'],
+      [119.3, 'וקשה להילחם בהם.'],
+      [121.0, 'אם יריב עם הבוס ויברח — יפטרו אותו,'],
+      [123.3, 'ואם יתקוף את הבוס — ייכנס לכלא.'],
+      [125.6, 'אז, כמו ברה,'],
+      [128.0, 'גופו של שלדון נכנס למצב קיפאון.'],
+      [131.2, 'הוא משתתק. הדופק, לחץ הדם'],
+      [133.6, 'וחום הגוף יורדים,'],
+      [135.8, 'וגם בהירות המחשבה פוחתת —'],
+      [138.2, 'חלק מקהות שנועדה להגן מפני כאב'],
+      [140.5, 'ומפני רגשות מציפים.'],
+      [142.2, 'אותו דבר קרה לשלדון'],
+      [143.4, 'כששדדו אותו לפני חודש:'],
+      [144.5, 'להילחם או לברוח היה מסוכן מדי,'],
+      [146.8, 'ולכן תגובת ההישרדות הטובה ביותר'],
+      [148.8, 'הייתה קיפאון.'],
+      [150.6, 'הגוף עשה דבר טוב כשקפא,'],
+      [152.7, 'אבל כיוון ששלדון לא נלחם ולא ברח,'],
+      [157.0, 'כימיקלי הסטרס לא ישתחררו מגופו'],
+      [158.8, 'כמו אצל בוב איש המערות.'],
+      [161.6, 'גופו של שלדון התחיל לרעוד מעט'],
+      [164.4, 'כשכעס על הבוס,'],
+      [166.2, 'והוא רעד הרבה מיד אחרי השוד,'],
+      [168.4, 'אבל הוא אמר לעצמו להתעשת'],
+      [170.3, 'ולהירגע, ועצר את הרעד.'],
+      [172.0, 'כיוון שלימדו אותו לעצור את הרעד,'],
+      [176.4, 'כימיקלי הסטרס לא ישתחררו כמו אצל ברה,'],
+      [178.4, 'והם נשארים כלואים במערכת העצבים.'],
+      [180.5, 'המשמעות: שלדון יחווה תסמינים גופניים'],
+      [184.7, 'כמו מתח בשרירים, כאבי ראש'],
+      [186.8, 'ובטן לא רגועה,'],
+      [189.0, 'וגם תסמינים נפשיים:'],
+      [191.9, 'חרדה, קשיי ריכוז, קשיי שינה,'],
+      [194.0, 'דיכאון, כעס או פחד.'],
+      [197.2, 'חיים במצב הישרדותי כזה'],
+      [199.8, 'הופכים אותו לפגיע יותר למחלות'],
+      [202.0, 'ולהפרעות נפשיות.'],
+      [203.8, 'אבל אילו שלדון היה נעזר'],
+      [206.3, 'בנטייה הטבעית של הגוף לרעוד'],
+      [208.4, 'אחרי אירוע מלחיץ או טראומטי,'],
+      [210.5, 'הכימיקלים האלה היו משתחררים,'],
+      [213.2, 'התסמינים הגופניים היו משתפרים,'],
+      [215.0, 'המוח הקדום היה מבין'],
+      [217.0, 'שהוא שרד ושהוא בטוח,'],
+      [219.3, 'והמוח החושב היה מאפשר לו'],
+      [221.0, 'להרגיש חזק יותר ומסוגל יותר'],
+      [223.4, 'להתמודד עם מה שיבוא.'],
+      [225.5, 'וכאן נכנס TRE.'],
+      [228.4, 'TRE, שפיתח ד״ר דיוויד ברסלי,'],
+      [232.1, 'הוא סדרה של שבעה תרגילים'],
+      [234.6, 'שעובדים על שריר מיוחד מאוד:'],
+      [236.8, 'שריר הפסואס (שריר המותן).'],
+      [239.7, 'התרגילים מעוררים את הרעד הטבעי של הגוף'],
+      [241.7, 'ומאפשרים לכימיקלי הסטרס להשתחרר.'],
+      [245.0, 'שלדון גילה שאפשר ללמוד את התרגילים'],
+      [248.6, 'לבד או בקבוצה,'],
+      [250.0, 'ושאחרי ארבעה עד שישה מפגשים'],
+      [253.1, 'הוא יוכל לתרגל אותם בעצמו.'],
+      [255.0, 'הוא הרגיש כל כך טוב אחרי מפגשי ה־TRE'],
+      [257.9, 'שהתחיל לספר עליו לכולם,'],
+      [260.4, 'כי רצה שיידעו שזה יכול לעזור גם להם:'],
+      [264.0, 'לבתו בת ה־16, הלחוצה ממבחנים,'],
+      [266.4, 'לאחיין בן ה־7, שהציקו לו בבית הספר,'],
+      [269.4, 'לעמית שסבל שנים מפציעת כדורגל,'],
+      [272.5, 'ולדודה שעברה ניתוח לפני חודשיים.'],
+      [275.5, 'הגוף מגיב ללחץ ולטראומה, גופניים ונפשיים,'],
+      [279.0, 'בתגובת ההישרדות המולדת שלו —'],
+      [281.4, 'ולכן שלדון ידע ש־TRE יכול לעזור'],
+      [283.5, 'לכל האנשים האלה בחייו.'],
+      [285.6, 'למעשה, הוא כל כך התלהב'],
+      [288.2, 'ממה ש־TRE עשה בשבילו,'],
+      [289.6, 'שפשוט לא הפסיק להפיץ את הבשורה.'],
+      [296.0, ''],
+    ];
     const videoFacade = document.getElementById('videoFacade');
-    let ytPlayer = null;
+    const videoSubs = document.getElementById('videoSubs');
+    let ytPlayer = null, subTimer = null;
 
-    function enableHebrewCaptions() {
-      if (!ytPlayer || !ytPlayer.setOption) return;
-      try {
-        ytPlayer.loadModule('captions');
-        ytPlayer.setOption('captions', 'track', {
-          languageCode: 'en', kind: 'asr',
-          translationLanguage: { languageCode: 'iw', languageName: 'Hebrew' },
-        });
-      } catch (e) { /* captions are a bonus; the video still plays */ }
+    function showSub(t) {
+      let text = '';
+      for (const [start, line] of SUBS) { if (t >= start) text = line; else break; }
+      if (videoSubs.textContent !== text) videoSubs.textContent = text;
     }
     function loadYouTubeApi() {
       return new Promise((resolve, reject) => {
@@ -1444,17 +1575,22 @@
         const holder = document.createElement('div');
         holder.id = 'ytPlayer';
         videoFacade.replaceWith(holder);
-        let captionsSet = false;
+        videoSubs.classList.remove('idle');
+        videoSubs.textContent = '';
         ytPlayer = new YT.Player('ytPlayer', {
           videoId: VIDEO_ID,
-          playerVars: { autoplay: 1, rel: 0, playsinline: 1, iv_load_policy: 3, cc_load_policy: 1, cc_lang_pref: 'iw', hl: 'iw' },
+          host: 'https://www.youtube-nocookie.com',
+          playerVars: { autoplay: 1, rel: 0, playsinline: 1, iv_load_policy: 3, cc_load_policy: 0, hl: 'iw' },
           events: {
             onReady: (e) => e.target.playVideo(),
-            onApiChange: () => enableHebrewCaptions(),
             onStateChange: (e) => {
-              if (e.data === YT.PlayerState.PLAYING && !captionsSet) {
-                captionsSet = true;
-                enableHebrewCaptions();
+              clearInterval(subTimer);
+              if (e.data === YT.PlayerState.PLAYING) {
+                // Our Hebrew bar replaces YouTube's own captions
+                try { ytPlayer.unloadModule('captions'); } catch (err) {}
+                subTimer = setInterval(() => showSub(ytPlayer.getCurrentTime()), 200);
+              } else {
+                showSub(ytPlayer.getCurrentTime());
               }
             },
             onError: (e) => { if (e.data === 101 || e.data === 150) openOnYouTube(); },
