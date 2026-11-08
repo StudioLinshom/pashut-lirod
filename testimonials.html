@@ -215,7 +215,8 @@
     let cameFromLanding = false;
     try {
       const ref = new URL(document.referrer);
-      cameFromLanding = ref.origin === location.origin && folder(ref.pathname) === folder(location.pathname)
+      // Any landing page in this folder or below it (e.g. the December cohort at december/)
+      cameFromLanding = ref.origin === location.origin && ref.pathname.startsWith(folder(location.pathname))
         && !/testimonials/.test(ref.pathname);
     } catch (e) { /* no referrer */ }
     document.querySelectorAll('.js-back').forEach(a => {
