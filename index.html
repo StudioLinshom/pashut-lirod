@@ -1023,7 +1023,7 @@
       <div class="price-badges reveal">
         <div class="price-badge-circle price-badge-circle--main" data-early-only>
           <span class="price-ribbon">הרשמה מוקדמת</span>
-          <div class="price-label">עד <bdi dir="ltr">8.12.2026</bdi></div>
+          <div class="price-label">עד <bdi dir="ltr">15.12.2026</bdi></div>
           <div class="price-amount"><span class="currency">₪</span>682</div>
         </div>
         <div class="price-badge-circle price-badge-circle--secondary" data-early-only>
@@ -1068,7 +1068,7 @@
           <div>
             <div class="form-host-name">בהנחיית פדית ציבייר</div>
             <div class="form-host-price">
-              <span data-early-only><span class="nowrap">682 ₪</span> בהרשמה מוקדמת עד <bdi dir="ltr">8.12.2026</bdi><br>לאחר מכן <span class="nowrap">798 ₪</span></span>
+              <span data-early-only><span class="nowrap">682 ₪</span> בהרשמה מוקדמת עד <bdi dir="ltr">15.12.2026</bdi><br>לאחר מכן <span class="nowrap">798 ₪</span></span>
               <span data-after-early hidden><span class="nowrap">798 ₪</span> לארבעת המפגשים</span>
             </div>
           </div>
@@ -1491,8 +1491,8 @@
     }
 
     // ============ EARLY-BIRD PRICE ============
-    // The 682 ₪ early-bird price is valid until 8.12.2026 (Israel time); from 9.12 only 798 ₪ shows.
-    const EARLY_BIRD_END = Date.parse('2026-12-09T00:00:00+02:00');
+    // The 682 ₪ early-bird price is valid until 15.12.2026 (Israel time); from 16.12 only 798 ₪ shows.
+    const EARLY_BIRD_END = Date.parse('2026-12-16T00:00:00+02:00');
     function applyPricing(now) {
       const early = now < EARLY_BIRD_END;
       document.querySelectorAll('[data-early-only]').forEach(el => { el.hidden = !early; });
